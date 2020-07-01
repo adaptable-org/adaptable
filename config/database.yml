@@ -78,8 +78,9 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
 production:
   <<: *default
-  database: adaptable_production
-  username: adaptable
-  password: <%= ENV['ADAPTABLE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
