@@ -6,13 +6,20 @@
   "success_url": "/",
   "repository": "https://github.com/adaptable-org/adaptable",
   "logo": "https://avatars0.githubusercontent.com/u/41238063?s=200&v=4",
-  "scripts": {
-    "postdeploy": "bundle exec rake db:migrate"
-  },
+  "image": "heroku/ruby",
   "env": {
-    "RAILS_ENV": "production",
-    "RACK_ENV": "production",
-    "RAILS_SERVE_STATIC_FILES": "true"
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_HTTP_HOST": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    }
   },
   "addons": [
     "heroku-postgresql",
@@ -21,9 +28,20 @@
   "buildpacks": [
     {
       "url": "heroku/ruby"
-    },
-    {      
-      "url": "heroku/nodejs"
     }
   ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "bin/rails assets:precompile",
+        "test": "bundle exec rake test"
+      },
+      "addons":[
+        "heroku-postgresql:in-dyno",
+        "heroku-redis:in-dyno"
+      ]
+    }
+  },
+  "scripts": {
+  },
 }
