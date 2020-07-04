@@ -11,23 +11,40 @@ on:
   push:
     branches: [ main, staging ]
   pull_request:
-    branches: [ main, staging ]
+    branches: [ main ]
 
 jobs:
   test:
 
     runs-on: ubuntu-latest
 
+    services:
+      db:
+        image: postgres:12.1
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
-    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-    # change this to (see https://github.com/ruby/setup-ruby#versioning):
-    # uses: ruby/setup-ruby@v1
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.5
+        bundler-cache: true      
     - name: Install dependencies
-      run: bundle install
+      run: |
+        sudo apt-get -yqq install libpq-dev
+        gem install bundler
+        bundle install --jobs 4 --retry 3      
     - name: Run tests
-      run: bundle exec rake
+      env:
+        PGHOST: 127.0.0.1
+        PGUSER: postgres
+        RAILS_ENV: test
+      run: |
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bundle exec rails test
