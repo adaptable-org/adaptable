@@ -52,16 +52,13 @@ jobs:
       - name: Install packages
         run: |
           yarn install --pure-lockfile
-      - name: Run linters
+      - name: Linters
         run: |
-          bin/rubocop --parallel
-          bin/stylelint
-          bin/prettier
-          bin/eslint
-      - name: Run security checks
+          rubocop --parallel
+      - name: Security
         run: |
-          bin/bundler-audit --update
-          bin/brakeman -q -w2
+          bundle-audit --update
+          brakeman
 
   tests:
     runs-on: ubuntu-latest
