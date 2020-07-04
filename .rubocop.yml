@@ -1,0 +1,36 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - '**/*.rake'
+    - 'test/mailers/previews/**/*'
+
+# Rails generates too many double quotes by default to stress about this.
+StringLiterals:
+  Enabled: false
+
+# Let's aim for 80, but we don't need to be nagged if we judiciously go over.
+Metrics/LineLength:
+  Enabled: false
+
+# While handy, this encourages making otherwise simple reg exes more cryptic.
+Style/RegexpLiteral:
+  Enabled: false
+
+# Nesting them leads to unnecessary indentation, so let's ignore this.
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# This is just too aggressive when things like migrations don't need comments
+Style/Documentation:
+  Enabled: false
+
+# Just don't like this one.
+Style/EmptyMethod:
+  Enabled: false
+
+# We like our private/protected methods bumped in
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods

@@ -22,7 +22,7 @@ group :red_green_refactor, halt_on_fail: true, all_after_pass: true, all_on_star
   end
 
   guard :rubocop, run_on_start: true do
-    watch(%r{.+\.rb$})
+    watch(/.+\.rb$/)
     watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
   end
 end
