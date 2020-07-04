@@ -40,6 +40,16 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Quality Control
+  gem 'brakeman', '~> 4.7.2'
+  gem 'rubocop', '~> 0.73.0'
+
+  # Automating quality control
+  gem 'guard', '~> 2.16' # NOTE: this is necessary in newer versions
+  gem 'guard-brakeman', '~> 0.8.6'
+  gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
+  gem 'guard-rubocop', '~> 1.3'
 end
 
 group :test do
@@ -48,7 +58,12 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  # For improved test formatting
+  gem 'minitest', '~> 5.13'
+  # gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
+  gem 'minitest-reporters', git: 'https://github.com/garrettdimon/minitest-reporters.git', branch: 'master'
+  # gem 'minitest-reporters', path: '/Users/garrettdimon/Code/minitest-reporters'
+
+  gem 'rb-readline', '~> 0.5.5'
+end
