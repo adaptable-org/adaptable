@@ -45,8 +45,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Quality Control
-  gem 'brakeman', '~> 4.7.2'
-  gem 'rubocop', '~> 0.73.0'
+  gem 'brakeman', '~> 4.8.2'
+  gem 'rubocop', '~> 0.86.0'
 
   # Automating quality control
   gem 'guard', '~> 2.16' # NOTE: this is necessary in newer versions
