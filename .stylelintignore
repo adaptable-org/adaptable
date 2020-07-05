@@ -14,8 +14,11 @@
 /vendor/*
 /yarn-error.log
 app.json
+master.key
 package.json
 Gemfile.lock
 LICENSE
 Procfile
 yarn-debug.log*
+*.text.erb
+*.enc

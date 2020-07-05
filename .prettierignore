@@ -15,5 +15,6 @@
 /yarn-error.log
 Gemfile.lock
 LICENSE
+master.key
 Procfile
 yarn-debug.log*

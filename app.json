@@ -1,4 +1,3 @@
-
 {
   "name": "Adaptable",
   "description": "Adaptable.org Application",
@@ -21,10 +20,7 @@
       "generator": "secret"
     }
   },
-  "addons": [
-    "heroku-postgresql",
-    "heroku-redis"
-  ],
+  "addons": ["heroku-postgresql", "heroku-redis"],
   "buildpacks": [
     {
       "url": "heroku/ruby"
@@ -36,10 +32,7 @@
         "test-setup": "bin/rails assets:precompile",
         "test": "bundle exec rake test"
       },
-      "addons":[
-        "heroku-postgresql:in-dyno",
-        "heroku-redis:in-dyno"
-      ]
+      "addons": ["heroku-postgresql:in-dyno", "heroku-redis:in-dyno"]
     }
   },
   "scripts": {}
