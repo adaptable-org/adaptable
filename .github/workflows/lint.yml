@@ -53,5 +53,5 @@ jobs:
           yarn prettier --check .
       - name: Security
         run: |
-          bundle-audit --update
+          bundle exec bundle-audit --update
           bundle exec brakeman
