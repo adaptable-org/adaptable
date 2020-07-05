@@ -9,11 +9,11 @@ AllCops:
     - 'test/mailers/previews/**/*'
 
 # Rails generates too many double quotes by default to stress about this.
-StringLiterals:
+Style/StringLiterals:
   Enabled: false
 
 # Let's aim for 80, but we don't need to be nagged if we judiciously go over.
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 # While handy, this encourages making otherwise simple reg exes more cryptic.
