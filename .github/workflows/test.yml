@@ -54,16 +54,17 @@ jobs:
           yarn install --pure-lockfile
       - name: Linters
         run: |
-          rubocop --parallel
+          bundle exec rubocop --parallel
           yarn eslint .
           yarn stylelint .
           yarn prettier --check .
       - name: Security
         run: |
           bundle-audit --update
-          brakeman
+          bundle exec brakeman
 
   tests:
+    name: Tests
     runs-on: ubuntu-latest
     services:
       db:
