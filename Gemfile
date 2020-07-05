@@ -53,6 +53,9 @@ group :development do
   gem 'guard-brakeman', '~> 0.8.6'
   gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
   gem 'guard-rubocop', '~> 1.3'
+
+  # For staying ahead of gem issues
+  gem 'bundler-audit', '~> 0.7.0.1'
 end
 
 group :test do
