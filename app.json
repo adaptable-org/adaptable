@@ -30,7 +30,7 @@
     "test": {
       "scripts": {
         "test-setup": "bin/rails assets:precompile",
-        "test": "bundle exec rake test"
+        "test": "bundle exec rails test"
       },
       "addons": ["heroku-postgresql:in-dyno", "heroku-redis:in-dyno"]
     }
