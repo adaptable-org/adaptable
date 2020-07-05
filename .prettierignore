@@ -18,6 +18,11 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore vendor directory, but keep the directory.
+/vendor/*
+!/vendor/
+!/vendor/.keep
+
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
