@@ -4,6 +4,7 @@
 /bin/*
 /config/*
 /coverage/*
+/lib/tasks/*
 /log/*
 /node_modules
 /public/assets
