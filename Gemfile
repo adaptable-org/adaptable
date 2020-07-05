@@ -62,14 +62,17 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 
-  # For improved test formatting
+  # Minitest & Reporting
   gem 'minitest', '~> 5.13'
-  # gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
+  gem 'simplecov', require: false
+
+  # For improved test formatting. Your choice.
   gem 'minitest-reporters', git: 'https://github.com/garrettdimon/minitest-reporters.git', branch: 'master'
-  # gem 'minitest-reporters', path: '/Users/garrettdimon/Code/minitest-reporters'
+  # gem 'minitest-reporters', '~> 1.4', '>= 1.4.2'
 
   gem 'rb-readline', '~> 0.5.5'
 end

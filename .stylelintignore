@@ -3,6 +3,7 @@
 /.bundle
 /bin/*
 /config/*
+/coverage/*
 /log/*
 /node_modules
 /public/assets
