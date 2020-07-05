@@ -298,7 +298,7 @@ DEPENDENCIES
   rubocop (~> 0.86.0)
   sass-rails (>= 6)
   selenium-webdriver
-  simplecov
+  simplecov (~> 0.18.5)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

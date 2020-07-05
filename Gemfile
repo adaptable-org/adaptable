@@ -70,7 +70,7 @@ group :test do
 
   # Minitest & Reporting
   gem 'minitest', '~> 5.13'
-  gem 'simplecov', require: false
+  gem 'simplecov', '~> 0.18.5'
 
   # For improved test formatting. Your choice.
   gem 'minitest-reporters', git: 'https://github.com/garrettdimon/minitest-reporters.git', branch: 'master'

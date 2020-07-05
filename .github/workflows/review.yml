@@ -1,4 +1,4 @@
-name: Lint & Format
+name: Review & Test
 
 on:
   push:
@@ -7,8 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  linters:
-    name: Linters
+  name: Static Analysis
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -55,3 +54,42 @@ jobs:
         run: |
           bundle exec bundle-audit check --update
           bundle exec brakeman
+  tests:
+    name: Automated Tests
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:12.1
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Ruby gem cache
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: Run tests
+        env:
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+          DISABLE_SPRING=1 bundle exec rails test
