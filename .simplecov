@@ -6,4 +6,3 @@ SimpleCov.start 'rails' do
   minimum_coverage line: 90, branch: 90
   refuse_coverage_drop
 end
-Rails.application.eager_load!

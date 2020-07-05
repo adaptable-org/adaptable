@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+guard :bundler_audit, run_on_start: true do
+  watch('Gemfile.lock')
+end
+
 group :red_green_refactor, halt_on_fail: true, all_after_pass: true, all_on_start: true do
   guard :minitest, run_on_start: true, all_after_pass: true do
     # Rails and Minitest

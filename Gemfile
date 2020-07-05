@@ -51,6 +51,7 @@ group :development do
   # Automating quality control
   gem 'guard', '~> 2.16' # NOTE: this is necessary in newer versions
   gem 'guard-brakeman', '~> 0.8.6'
+  gem 'guard-bundler-audit', '~> 0.1.4'
   gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
   gem 'guard-rubocop', '~> 1.3'
 
