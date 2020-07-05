@@ -44,8 +44,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  # For annotating files with relevant info
+  gem 'annotate', '~> 3.1', '>= 3.1.1'
+
   # Quality Control
   gem 'brakeman', '~> 4.8.2'
+  gem 'bundler-audit', '~> 0.7.0.1'
   gem 'rubocop', '~> 0.86.0'
 
   # Automating quality control
@@ -54,9 +58,6 @@ group :development do
   gem 'guard-bundler-audit', '~> 0.1.4'
   gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
   gem 'guard-rubocop', '~> 1.3'
-
-  # For staying ahead of gem issues
-  gem 'bundler-audit', '~> 0.7.0.1'
 end
 
 group :test do
