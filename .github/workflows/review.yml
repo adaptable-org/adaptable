@@ -5,8 +5,8 @@ on:
     branches: [main, staging]
   pull_request:
     branches: [main]
-
-  jobs:
+jobs:
+  reviews:
     name: Static Analysis
     runs-on: ubuntu-latest
     steps:
