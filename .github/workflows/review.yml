@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [main]
 
-jobs:
-  name: Static Analysis
+  jobs:
+    name: Static Analysis
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
