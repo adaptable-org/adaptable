@@ -14,7 +14,7 @@ namespace :code do
         max_exit_status: 0,
       },
       minitest: {
-        review: 'DISABLE_SPRING=1 bundle exec rails test',
+        review: 'COVERAGE=true DISABLE_SPRING=1 bundle exec rails test',
         quiet: '',
         max_exit_status: 0,
       },
