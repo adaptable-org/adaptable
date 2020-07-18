@@ -44,16 +44,16 @@ jobs:
       - name: Install packages
         run: |
           yarn install --pure-lockfile
-      - name: Linters
+      - name: Dependencies
         run: |
-          bundle exec rubocop --parallel
-          yarn eslint .
-          yarn stylelint .
-          yarn prettier --check .
+          rails code:review:dependencies
       - name: Security
         run: |
-          bundle exec bundle-audit check --update
-          bundle exec brakeman
+          rails code:review:security
+      - name: Syntax
+        run: |
+          rails code:review:syntax
+
   tests:
     name: Automated Tests
     runs-on: ubuntu-latest
@@ -91,4 +91,4 @@ jobs:
           RAILS_ENV: test
         run: |
           bundle exec rake db:setup
-          COVERAGE=true DISABLE_SPRING=1 bundle exec rails test
+          rails code:review:tests
