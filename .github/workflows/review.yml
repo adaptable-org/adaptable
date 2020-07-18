@@ -46,13 +46,13 @@ jobs:
           yarn install --pure-lockfile
       - name: Dependencies
         run: |
-          rails code:review:dependencies
+          bundle exec rails code:review:dependencies
       - name: Security
         run: |
-          rails code:review:security
+          bundle exec rails code:review:security
       - name: Syntax
         run: |
-          rails code:review:syntax
+          bundle exec rails code:review:syntax
 
   tests:
     name: Automated Tests
@@ -91,4 +91,4 @@ jobs:
           RAILS_ENV: test
         run: |
           bundle exec rake db:setup
-          rails code:review:tests
+          bundle exec rails code:review:tests
