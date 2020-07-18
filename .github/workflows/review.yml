@@ -2,7 +2,7 @@ name: Review & Test
 
 on:
   push:
-    branches: [main, staging]
+    branches: [main, staging, production]
   pull_request:
     branches: [main]
 jobs:
