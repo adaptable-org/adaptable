@@ -1,10 +1,5 @@
 desc 'Wraps all things deploy for safter, easier, and more consistent usage'
 namespace :ops do
-  desc 'Open Adaptable Pipeline on Heroku'
-  task :pipeline do
-    open 'https://dashboard.heroku.com/pipelines/09559d77-2bcd-43b4-bc05-5cb152cdaad7'
-  end
-
   namespace :staging do |staging|
     task :dashboard do
       dashboard(staging)
@@ -76,7 +71,7 @@ namespace :ops do
   private
 
     def dashboard(namespace)
-      exec 'open "https://dashboard.heroku.com/apps/adaptable-#{env(namespace)}"'
+      sh 'open "https://dashboard.heroku.com/apps/adaptable-#{env(namespace)}"'
     end
 
     def disable(namespace)
@@ -91,11 +86,10 @@ namespace :ops do
       target_environment = env(namespace)
       current_branch = `git rev-parse --abbrev-ref HEAD`.strip
 
-      exec 'git stash'
-      exec 'git checkout main' unless current_branch == 'main'
-      exec 'git pull'
+      sh 'git checkout main' unless current_branch == 'main'
+      sh 'git pull'
 
-      exec "git push origin main:#{target_environment}"
+      sh "git push origin main:#{target_environment}"
     end
 
     def migrate(namespace)
@@ -115,7 +109,7 @@ namespace :ops do
     end
 
     def heroku(command, namespace)
-      exec "bundle exec heroku #{command} --app adaptable-#{env(namespace)}"
+      sh "bundle exec heroku #{command} --app adaptable-#{env(namespace)}"
     end
 
     def env(namespace)
