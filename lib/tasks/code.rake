@@ -93,6 +93,11 @@ namespace :code do
       review_group(:syntax, %i[rubocop stylelint eslint prettier])
     end
 
+    desc 'Runs minitest and opens the coverage report'
+    task coverage: %i[tests] do
+      system('open coverage/index.html')
+    end
+
     private
 
       def review_group(group_name, group_checks)
