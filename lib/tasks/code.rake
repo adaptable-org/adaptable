@@ -67,6 +67,12 @@ namespace :code do
     exec('bundle exec guard')
   end
 
+  desc "Shortcut for reviewing everything"
+  task review: 'review:all'
+
+  desc "Shortcut for coverage"
+  task cov: 'review:coverage'
+
   desc 'Handles the various automated tests and static analysis tasks'
   namespace :review do
 
