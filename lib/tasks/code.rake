@@ -62,9 +62,9 @@ namespace :code do
   task :watch do
     return unless Rails.env.development?
 
-    system('yarn install')
-    system('bundle install')
-    exec('bundle exec guard')
+    system 'yarn install'
+    system 'bundle install'
+    exec 'bundle exec guard'
   end
 
   desc "Shortcut for reviewing everything"
@@ -101,7 +101,7 @@ namespace :code do
 
     desc 'Runs minitest and opens the coverage report'
     task coverage: %i[tests] do
-      system('open coverage/index.html')
+      system 'open coverage/index.html'
     end
 
     private
