@@ -1,6 +1,7 @@
 .byebug_history
 .yarn-integrity
 /.bundle
+/app/javascript/images/*
 /bin/*
 /config/*
 /coverage/*
