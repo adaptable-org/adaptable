@@ -3,6 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+// Tailwind CSS
+import 'tailwind/tailwind'
+
+// Rails JS
 require('@rails/ujs').start()
 require('turbolinks').start()
 require('@rails/activestorage').start()

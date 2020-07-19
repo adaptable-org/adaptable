@@ -1,0 +1,7 @@
+/* app/javascript/stylesheets/application.scss */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* You can add your own custom components/styles here */
+
+@import 'tailwindcss/utilities';
