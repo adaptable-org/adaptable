@@ -1,89 +1,54 @@
 desc 'Wraps all things deploy for safter, easier, and more consistent usage'
 namespace :ops do
-  namespace :staging do |staging|
-    task :dashboard do
-      dashboard(staging)
-    end
 
-    task :disable do
-      disable(staging)
-    end
-
-    task :enable do
-      enable(staging)
-    end
-
-    task :deploy do
-      deploy(staging)
-    end
-
-    task :migrate do
-      migrate(staging)
-    end
-
-    task :tail do
-      tail(staging)
-    end
-
-    task :console do
-      console(staging)
-    end
-
-    task :releases do
-      releases(staging)
-    end
+  task :dashboard do
+    dashboard env(ARGV)
   end
 
-  namespace :production do |production|
-    task :dashboard do
-      dashboard(production)
-    end
+  task :disable do
+    disable env(ARGV)
+  end
 
-    task :disable do
-      disable(production)
-    end
+  task :enable do
+    enable env(ARGV)
+  end
 
-    task :enable do
-      enable(production)
-    end
+  task :deploy do
+    deploy env(ARGV)
+  end
 
-    task :deploy do
-      deploy(production)
-    end
+  task :migrate do
+    migrate env(ARGV)
+  end
 
-    task :migrate do
-      migrate(production)
-    end
+  task :tail do
+    tail env(ARGV)
+  end
 
-    task :tail do
-      tail(production)
-    end
+  task :console do
+    console env(ARGV)
+  end
 
-    task :console do
-      console(production)
-    end
-
-    task :releases do
-      releases(production)
-    end
+  task :releases do
+    releases env(ARGV)
   end
 
   private
 
-    def dashboard(namespace)
-      sh 'open "https://dashboard.heroku.com/apps/adaptable-#{env(namespace)}"'
+    def dashboard(environment)
+      sh 'open "https://dashboard.heroku.com/apps/adaptable-#{environment}"'
     end
 
-    def disable(namespace)
-      heroku('maintenance:on', namespace)
+    def disable(environment)
+      heroku('maintenance:on', environment)
     end
 
-    def enable(namespace)
-      heroku('maintenance:off', namespace)
+    def enable(environment)
+      heroku('maintenance:off', environment)
     end
 
-    def deploy(namespace)
-      target_environment = env(namespace)
+    def deploy(environment)
+      target_environment = environment
       current_branch = `git rev-parse --abbrev-ref HEAD`.strip
 
       sh 'git checkout main' unless current_branch == 'main'
@@ -92,27 +57,32 @@ namespace :ops do
       sh "git push origin main:#{target_environment}"
     end
 
-    def migrate(namespace)
-      heroku('run rake db:migrate', namespace)
+    def migrate(environment)
+      heroku('run rake db:migrate', environment)
     end
 
-    def tail(namespace)
-      heroku('logs --tail', namespace)
+    def tail(environment)
+      heroku('logs --tail', environment)
     end
 
-    def console(namespace)
-      heroku('run rails console', namespace)
+    def console(environment)
+      heroku('run rails console', environment)
     end
 
-    def releases(namespace)
-      heroku('releases', namespace)
+    def releases(environment)
+      heroku('releases', environment)
     end
 
-    def heroku(command, namespace)
-      sh "bundle exec heroku #{command} --app adaptable-#{env(namespace)}"
+    def heroku(command, environment)
+      sh "bundle exec heroku #{command} --app adaptable-#{environment}"
     end
 
-    def env(namespace)
-      namespace.scope.path.split(':').last
+    def env(args)
+      target_environment = args.last.to_sym
+
+      # This dynamically creates a task representing the environment argument so rake doesn't ry to run it
+      task target_environment do ; end
+
+      target_environment
     end
 end
