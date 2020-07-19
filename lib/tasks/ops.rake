@@ -30,11 +30,6 @@ namespace :ops do
     heroku 'releases'
   end
 
-  desc 'Opens the relevant application environmnet on Heroku'
-  task :dashboard do
-    sh "open 'https://dashboard.heroku.com/apps/adaptable-#{env(ARGV)}'"
-  end
-
   desc 'Runs a code review, and, if it passes, pushes to the relevant branch to trigger a deploy'
   task deploy: %i[code:review] do
     environment = env(ARGV)
