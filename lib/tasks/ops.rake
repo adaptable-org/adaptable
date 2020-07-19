@@ -28,7 +28,7 @@ namespace :ops do
     sh "open 'https://dashboard.heroku.com/apps/adaptable-#{env(ARGV)}'"
   end
 
-  task :deploy do
+  task deploy: %i[code:review] do
     environment = env(ARGV)
     current_branch = `git rev-parse --abbrev-ref HEAD`.strip
 
