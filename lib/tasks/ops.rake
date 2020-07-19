@@ -26,7 +26,7 @@ namespace :ops do
 
   task :dashboard do
     sh "open 'https://dashboard.heroku.com/apps/adaptable-#{env(ARGV)}'"
-  end  
+  end
 
   task :deploy do
     environment = env(ARGV)
