@@ -1,33 +1,41 @@
 desc 'Wraps all things deploy for safter, easier, and more consistent usage'
 namespace :ops do
+  desc 'Puts up the maintenance page via Heroku'
   task :disable do
     heroku 'maintenance:on'
   end
 
+  desc 'Takes down the maintenance page via Heroku'
   task :enable do
     heroku 'maintenance:off'
   end
 
+  desc 'Runs migrations on server via Heroku'
   task :migrate do
     heroku 'run rake db:migrate'
   end
 
+  desc 'Tails server logs via Heroku'
   task :tail do
     heroku 'logs --tail'
   end
 
+  desc 'Opens console on server via Heroku'
   task :console do
     heroku 'run rails console'
   end
 
+  desc 'Lists recent releases via Heroku'
   task :releases do
     heroku 'releases'
   end
 
+  desc 'Opens the relevant application environmnet on Heroku'
   task :dashboard do
     sh "open 'https://dashboard.heroku.com/apps/adaptable-#{env(ARGV)}'"
   end
 
+  desc 'Runs a code review, and, if it passes, pushes to the relevant branch to trigger a deploy'
   task deploy: %i[code:review] do
     environment = env(ARGV)
     current_branch = `git rev-parse --abbrev-ref HEAD`.strip
