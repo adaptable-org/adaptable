@@ -79,8 +79,14 @@ namespace :ops do
 
     def env(args)
       target_environment = args.last.to_sym
+      valid_targets = %w[staging production]
 
-      # This dynamically creates a task representing the environment argument so rake doesn't ry to run it
+      unless valid_targets.include?(target_environment)
+        puts ""#{target_environment}" is not a valid environment. Must be one of #{valid_targets}."
+        exit 1
+      end
+
+      # This dynamically creates a task representing the environment argument so rake doesn't ry to run it as a task
       task target_environment do ; end
 
       target_environment
