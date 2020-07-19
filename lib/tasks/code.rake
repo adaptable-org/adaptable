@@ -124,7 +124,7 @@ namespace :code do
         group_name = group_name.capitalize
 
         puts "#{group_name} Review:"
-        group_checks.map { |check| failures << review(check) }
+        group_checks.map { |check| failures << review_one(check) }
         puts "\n"
 
         failures.compact!
@@ -134,7 +134,7 @@ namespace :code do
         exit failures.size if failures.any?
       end
 
-      def review(check_symbol)
+      def review_one(check_symbol)
         # Must have a relevant review command to run
         raise InvalidCheck, "':#{check_symbol}' - #{CHECKS.keys}" unless CHECKS.dig(check_symbol)
         raise MissingReviewCommand, "No review command for #{check_symbol}" unless CHECKS.dig(check_symbol, :review)
@@ -184,10 +184,10 @@ namespace :code do
 
       def format_group(group_name, group_checks)
         puts "\n#{group_name.capitalize} Formatting:"
-        group_checks.each { |check| format(check) }
+        group_checks.each { |check| format_one(check) }
       end
 
-      def format(check_symbol)
+      def format_one(check_symbol)
         # Don't accidentally update any code outside of dev
         return unless Rails.env.development?
 
