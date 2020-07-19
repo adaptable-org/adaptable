@@ -50,7 +50,8 @@ namespace :ops do
       # These commands should only work for staging/production
       valid_targets = %w[staging production]
       unless valid_targets.include?(target_environment)
-        puts "'#{target_environment}' is not a valid environment. Must be either #{valid_targets.map{ |value| "'#{value}'"}.join(' or ')}"
+        valid_targets_string = valid_targets.map{ |value| "'#{value}'"}.join(' or ')
+        puts "'#{target_environment}' is not a valid environment. Must be either #{valid_targets_string}"
         exit 1
       end
 
