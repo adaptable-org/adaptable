@@ -3,7 +3,6 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'bin/**/*'
-    - 'config/**/*'
     - 'node_modules/**/*'
     - '**/*.rake'
     - 'test/mailers/previews/**/*'
