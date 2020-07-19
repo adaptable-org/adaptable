@@ -27,6 +27,11 @@ namespace :code do
       quiet: '',
       max_exit_status: 0,
     },
+    system_tests: {
+      review: 'DISABLE_SPRING=1 bundle exec rails test:system',
+      quiet: '',
+      max_exit_status: 0,
+    },
     brakeman: {
       review: 'bundle exec brakeman',
       quiet: '--quiet',
@@ -87,6 +92,11 @@ namespace :code do
     desc 'Runs minitest'
     task :tests do
       review_group(:testing, %i[minitest])
+    end
+
+    desc 'Runs system tests'
+    task :system do
+      review_group(:testing, %i[system_tests])
     end
 
     desc 'Runs static analysis security checks'
