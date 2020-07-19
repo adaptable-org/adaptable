@@ -75,6 +75,9 @@ namespace :code do
   desc "Shortcut for reviewing everything"
   task review: 'review:all'
 
+  desc "Shortcut for formatting everything"
+  task format: 'format:all'
+
   desc "Shortcut for coverage"
   task cov: 'review:coverage'
 
