@@ -18,4 +18,5 @@ Gemfile.lock
 LICENSE
 master.key
 Procfile
+site.webmanifest
 yarn-debug.log*

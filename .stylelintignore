@@ -1,5 +1,6 @@
 .byebug_history
 .yarn-integrity
+
 /.bundle
 /app/javascript/images/*
 /bin/*
@@ -22,6 +23,9 @@ package.json
 Gemfile.lock
 LICENSE
 Procfile
+site.webmanifest
 yarn-debug.log*
 *.text.erb
 *.enc
+*.png
+*.ico
