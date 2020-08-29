@@ -76,7 +76,7 @@ class SettingsTest < ActiveSupport::TestCase
     assert_equal @default_return_value, Settings.default(:this_key_does_not_exist_anywhere) { @default_return_value }
   end
 
-  test "raises exception when retriving values using non-symbol params" do
+  test "raises exception when retrieving values using non-symbol params" do
     assert_raises(ArgumentError) { Settings.secret('test_one_secret') }
     assert_raises(ArgumentError) { Settings.secret(:test_one_secret, 'test_three_secret') }
     assert_raises(ArgumentError) { Settings.config('test_one') }
