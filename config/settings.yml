@@ -1,0 +1,23 @@
+<% base_name = 'Adaptable' %>
+
+test:
+  conflict: 'settings.yml'
+  test_one: 'One'
+  test_two:
+    test_three: 'Two Three'
+  test_erb: <%= "#{Rails.env}" %>
+  brand:
+    name: <%= base_name %> (Test)
+    domain: <%= base_name %>.org (Test)
+development:
+  brand:
+    name: <%= base_name %> (Dev)
+    domain: <%= base_name %>.org (Dev)
+staging:
+  brand:
+    name: <%= base_name %> (Staging)
+    domain: <%= base_name %>.org (Staging)
+production:
+  brand:
+    name: <%= base_name %>
+    domain: <%= base_name %>.org
