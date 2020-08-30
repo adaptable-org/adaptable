@@ -55,6 +55,7 @@ group :development do
   # Automating quality control
   gem 'guard', '~> 2.16' # NOTE: this is necessary in newer versions
   gem 'guard-brakeman', '~> 0.8.6'
+  gem 'guard-bundler', '~> 3.0.0'
   gem 'guard-bundler-audit', '~> 0.1.4'
   gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
   gem 'guard-rubocop', '~> 1.3'
@@ -70,7 +71,7 @@ group :test do
 
   # Minitest & Reporting
   gem 'minitest', '~> 5.13'
-  gem 'simplecov', '~> 0.18.5'
+  gem 'simplecov', '~> 0.19.0', require: false
 
   # For improved test formatting. Your choice.
   gem 'minitest-reporters', git: 'https://github.com/garrettdimon/minitest-reporters.git', branch: 'master'

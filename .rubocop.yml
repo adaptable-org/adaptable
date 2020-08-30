@@ -14,7 +14,7 @@ Style/StringLiterals:
 
 # Let's aim for 80, but we don't need to be nagged if we judiciously go over.
 Layout/LineLength:
-  Enabled: false
+  IgnoredPatterns: ['test .* do', 'assert.*']
 
 # While handy, this encourages making otherwise simple reg exes more cryptic.
 Style/RegexpLiteral:

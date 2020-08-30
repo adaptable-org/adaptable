@@ -1,13 +1,20 @@
 # frozen_string_literal: true
 
-# Before testing gets going, let's make sure no gems need love
-guard :bundler_audit, run_on_start: true do
-  watch('Gemfile.lock')
+group :bundler, halt_on_fail: true, all_on_start: true do
+  # Before testing gets going, let's make sure no gems need updating
+  guard :bundler do
+    watch('Gemfile')
+  end
+
+  # Before testing gets going, let's make sure no gems are security risks
+  guard :bundler_audit do
+    watch('Gemfile.lock')
+  end
 end
 
-group :red_green_refactor, halt_on_fail: true, all_after_pass: true, all_on_start: true do
+group :code, halt_on_fail: true, all_after_pass: true, all_on_start: true do
   # Tests first and foremost. If they're not passing, nothing else matters.
-  guard :minitest, run_on_start: true, all_after_pass: true do
+  guard :minitest do
     # Rails and Minitest
     watch(%r{^app/(.+)\.rb$})                               { |m| "test/#{m[1]}_test.rb" }
     watch(%r{^app/controllers/application_controller\.rb$}) { 'test/controllers' }
@@ -21,7 +28,7 @@ group :red_green_refactor, halt_on_fail: true, all_after_pass: true, all_on_star
   end
 
   # If the tests pass, check for potential security issues.
-  guard :brakeman, run_on_start: true do
+  guard :brakeman do
     watch(%r{^app/.+\.(erb|rb)$})
     watch(%r{^config/.+\.rb$})
     watch(%r{^lib/.+\.rb$})
@@ -29,8 +36,9 @@ group :red_green_refactor, halt_on_fail: true, all_after_pass: true, all_on_star
   end
 
   # The code's in good shape, so check for cleanup work.
-  guard :rubocop, run_on_start: true do
+  guard :rubocop do
     watch(/.+\.rb$/)
+    watch(/config\/.+\.rb$/)
     watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
   end
 end
