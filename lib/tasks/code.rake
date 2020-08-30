@@ -85,7 +85,7 @@ namespace :code do
   namespace :review do
 
     desc 'Runs all dependency, tests, security, and syntax checks in order of risk/importance'
-    task all: %w[dependencies tests security syntax]
+    task all: %w[dependencies tests security syntax coverage]
 
     desc 'Audits Bundler and Yarn dependencies'
     task :dependencies do
