@@ -228,7 +228,7 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     shellany (0.0.1)
-    simplecov (0.18.5)
+    simplecov (0.19.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
@@ -298,7 +298,7 @@ DEPENDENCIES
   rubocop (~> 0.86.0)
   sass-rails (>= 6)
   selenium-webdriver
-  simplecov (~> 0.18.5)
+  simplecov (~> 0.19.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
