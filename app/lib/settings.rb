@@ -31,7 +31,7 @@
 #   Settings.optional(:missing)           # Returns nil
 #   Settings.critical(:key)               # Returns the value
 #   Settings.critical(:key_one, :key_two) # Returns the value of the nested keys
-#   Settings.critical(:missing)           # Raises an exception so the app doesn't continue with a critical value missing
+#   Settings.critical(:missing)           # Raises exception when a critical value is missing
 #   Settings.default(:key) { 'Default' }  # Provides a predictable interface for providing defaults inline.
 
 class Settings
@@ -103,7 +103,10 @@ class << Settings
       values = possible_values(key, *nested_keys).compact
 
       # Multiple matches were found, and conflicts would introduce potential for errors. Best to fail now.
-      raise Settings::ConflictError, "multiple values for keys: #{[key, *nested_keys].inspect} > #{values.inspect}" if values.size > 1
+      if values.size > 1
+        exception_messsage = "multiple values for keys: #{[key, *nested_keys].inspect} > #{values.inspect}"
+        raise Settings::ConflictError, exception_messsage
+      end
 
       values.first
     end
