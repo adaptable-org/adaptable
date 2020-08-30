@@ -19,5 +19,3 @@ All contributors to Adaptable are expected to follow the [Adaptable Code of Cond
 # License
 
 Adaptable.org is released under an [MIT License](https://opensource.org/licenses/MIT).
-
-
