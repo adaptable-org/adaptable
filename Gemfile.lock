@@ -204,6 +204,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rb-readline (0.5.5)
+    redcarpet (3.5.0)
     regexp_parser (1.7.1)
     rexml (3.2.4)
     rubocop (0.89.1)
@@ -304,6 +305,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   rb-readline (~> 0.5.5)
+  redcarpet (~> 3.5)
   rubocop (~> 0.89.1)
   sass-rails (>= 6)
   selenium-webdriver

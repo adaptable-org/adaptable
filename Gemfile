@@ -33,6 +33,9 @@ gem 'bootsnap', '>= 1.4.8', require: false
 # Exception handling
 gem "honeybadger", "~> 4.6"
 
+# For Markdown Processing/Rendering
+gem 'redcarpet', '~> 3.5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

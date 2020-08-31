@@ -17,7 +17,9 @@
     <meta name="msapplication-TileColor" content="#00aba9">
     <meta name="theme-color" content="#111c4c">
 
+    <% if Rails.env.production? -%>
     <script src="https://baldeagle.adaptable.org/script.js" site="ZFXMCRAG" defer></script>
+    <% end -%>
   </head>
 
   <body>
