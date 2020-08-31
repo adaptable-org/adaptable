@@ -37,97 +37,97 @@
 class Settings
   class ConflictError < ::StandardError; end
   class MissingError < ::StandardError; end
-end
 
-class << Settings
-  # Looks only for secrets matching the symbols.
-  #
-  #   Settings.secret(:key_one) # => value for :key_one
-  #   Settings.secret(:key_one, :key_two) # => value for :key_two nested under :key_one
-  def secret(key, *nested_keys)
-    dig(key, *nested_keys) { Rails.application.credentials.__send__(key) }
-  end
+  class << self
+    # Looks only for secrets matching the symbols.
+    #
+    #   Settings.secret(:key_one) # => value for :key_one
+    #   Settings.secret(:key_one, :key_two) # => value for :key_two nested under :key_one
+    def secret(key, *nested_keys)
+      dig(key, *nested_keys) { Rails.application.credentials.__send__(key) }
+    end
 
-  # Looks only for config settings matching the symbols.
-  #
-  #   Settings.config(:key_one) # => value for :key_one
-  #   Settings.config(:key_one, :key_two) # => value for :key_two nested under :key_one
-  def config(key, *nested_keys)
-    dig(key, *nested_keys) { Rails.configuration.settings[key] }
-  end
+    # Looks only for config settings matching the symbols.
+    #
+    #   Settings.config(:key_one) # => value for :key_one
+    #   Settings.config(:key_one, :key_two) # => value for :key_two nested under :key_one
+    def config(key, *nested_keys)
+      dig(key, *nested_keys) { Rails.configuration.settings[key] }
+    end
 
-  # Looks only for environment variables matching the symbol.
-  #
-  #   Settings.env(:key) # => value for :key
-  def env(key)
-    dig(key) { ENV[key.upcase.to_s] }
-  end
+    # Looks only for environment variables matching the symbol.
+    #
+    #   Settings.env(:key) # => value for :key
+    def env(key)
+      dig(key) { ENV[key.upcase.to_s] }
+    end
 
-  # Performs a lookup where returning nil is acceptable if a match is not found
-  # Essentially an alias of `lookup` but with a more intention-revealing name
-  #
-  #   Settings.optional(:key) # => value for :key
-  #   Settings.optional(:missing_key) # => nil
-  def optional(key, *nested_keys)
-    lookup(key, *nested_keys)
-  end
+    # Performs a lookup where returning nil is acceptable if a match is not found
+    # Essentially an alias of `lookup` but with a more intention-revealing name
+    #
+    #   Settings.optional(:key) # => value for :key
+    #   Settings.optional(:missing_key) # => nil
+    def optional(key, *nested_keys)
+      lookup(key, *nested_keys)
+    end
 
-  # Raises an exception if all potential sources are nil
-  #
-  #   Settings.critical(:key) # => value for :key
-  #   Settings.critical(:missing_key) # => Raises Settings::MissingError
-  def critical(key, *nested_keys)
-    value = lookup(key, *nested_keys)
+    # Raises an exception if all potential sources are nil
+    #
+    #   Settings.critical(:key) # => value for :key
+    #   Settings.critical(:missing_key) # => Raises Settings::MissingError
+    def critical(key, *nested_keys)
+      value = lookup(key, *nested_keys)
 
-    # Critical settings must be present. Best to fail now.
-    raise Settings::MissingError, "no value found for keys: #{[key, *nested_keys].inspect}" if value.nil?
+      # Critical settings must be present. Best to fail now.
+      raise Settings::MissingError, "no value found for keys: #{[key, *nested_keys].inspect}" if value.nil?
 
-    value
-  end
+      value
+    end
 
-  # Returns the provided default if no match is found
-  #
-  #   Settings.default(:key) { 'Default' } # => value for :key
-  #   Settings.default(:missing_key) { 'Default' } # => Returns 'Default'
-  def default(key, *nested_keys, &default)
-    raise ArgumentError, 'block required for default return value' unless block_given?
+    # Returns the provided default if no match is found
+    #
+    #   Settings.default(:key) { 'Default' } # => value for :key
+    #   Settings.default(:missing_key) { 'Default' } # => Returns 'Default'
+    def default(key, *nested_keys, &default)
+      raise ArgumentError, 'block required for default return value' unless block_given?
 
-    value = lookup(key, *nested_keys)
+      value = lookup(key, *nested_keys)
 
-    value.nil? ? default.call : value
-  end
+      value.nil? ? default.call : value
+    end
 
-  protected
+    protected
 
-    def lookup(key, *nested_keys)
-      values = possible_values(key, *nested_keys).compact
+      def lookup(key, *nested_keys)
+        values = possible_values(key, *nested_keys).compact
 
-      # Multiple matches were found, and conflicts would introduce potential for errors. Best to fail now.
-      if values.size > 1
-        exception_messsage = "multiple values for keys: #{[key, *nested_keys].inspect} > #{values.inspect}"
-        raise Settings::ConflictError, exception_messsage
+        # Multiple matches were found, and conflicts would introduce potential for errors. Best to fail now.
+        if values.size > 1
+          exception_messsage = "multiple values for keys: #{[key, *nested_keys].inspect} > #{values.inspect}"
+          raise Settings::ConflictError, exception_messsage
+        end
+
+        values.first
       end
 
-      values.first
-    end
+      def possible_values(key, *nested_keys)
+        [
+          secret(key, *nested_keys),
+          config(key, *nested_keys),
+          env(key)
+        ]
+      end
 
-    def possible_values(key, *nested_keys)
-      [
-        secret(key, *nested_keys),
-        config(key, *nested_keys),
-        env(key)
-      ]
-    end
+      def dig(key, *nested_keys)
+        raise ArgumentError, 'all arguments must be symbols' unless symbols_only?(key, *nested_keys)
 
-    def dig(key, *nested_keys)
-      raise ArgumentError, 'all arguments must be symbols' unless symbols_only?(key, *nested_keys)
+        secret = yield
 
-      secret = yield
+        nested_keys.any? ? secret&.dig(*nested_keys) : secret
+      end
 
-      nested_keys.any? ? secret&.dig(*nested_keys) : secret
-    end
-
-    def symbols_only?(*keys)
-      keys.all? { |key| key.is_a? Symbol }
-    end
+      def symbols_only?(*keys)
+        keys.all? { |key| key.is_a? Symbol }
+      end
+  end
 end
