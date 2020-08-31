@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class PagesController < ApplicationController
-  before_action :load_markdown
+class ProseController < ApplicationController
+  before_action :load_content
 
   def about
   end
@@ -23,7 +23,7 @@ class PagesController < ApplicationController
 
   protected
 
-    def load_markdown
-      @markdown = File.read("#{Rails.root}/app/views/pages/#{action_name}.md")
+    def load_content
+      @content = File.read("#{Rails.root}/app/views/prose/#{action_name}.md")
     end
 end

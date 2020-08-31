@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class PagesControllerTest < ActionDispatch::IntegrationTest
+class ProseControllerTest < ActionDispatch::IntegrationTest
   test "should get about" do
     get about_page_url
     assert_response :success
