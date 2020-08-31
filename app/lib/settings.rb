@@ -18,13 +18,14 @@
 # With all source-indifferent lookups, if multiple matches are found, they will raise an exception to prevent
 # accidentally using the wrong value from settings.yml when you wanted the value from production.yml.enc.
 #
-#   Settings.optional(:key)               # => Returns the value
-#   Settings.optional(:key_one, :key_two) # => Returns the value of the nested keys
-#   Settings.optional(:missing)           # => Returns nil
-#   Settings.required(:key)               # => Returns the value
-#   Settings.required(:key_one, :key_two) # => Returns the value of the nested keys
-#   Settings.required(:missing)           # => Raises exception when a critical value is missing
-#   Settings.default(:key) { 'Default' }  # => Provides a predictable interface for providing defaults inline.
+#   Settings.optional(:key)                   # => Returns the value
+#   Settings.optional(:key_one, :key_two)     # => Returns the value of the nested keys
+#   Settings.optional(:missing)               # => Returns nil
+#   Settings.required(:key)                   # => Returns the value
+#   Settings.required(:key_one, :key_two)     # => Returns the value of the nested keys
+#   Settings.required(:missing)               # => Raises exception when a critical value is missing
+#   Settings.default(:key) { 'Default' }      # => Returns the value and ignores the default.
+#   Settings.default(:missing) { 'Default' }  # => Returns 'Default'
 #
 # For convenience and syntactic sugar, optional and default lookups can use the key names directly.
 # This will not work as a substitute for required lookups.
@@ -42,6 +43,10 @@
 #   Settings.config(:public_key)
 #   Settings.config(:domain, :name)
 #   Settings.env(:env_var)
+#
+# One final caveat. As one might expect, there is a performance difference between accessing values directly using the
+# existing built-in Rails approaches, but for the majority of use cases where these values would be accessed, the
+# difference should be marginal.
 
 class Settings
   class ConflictError < ::StandardError; end
