@@ -2,6 +2,7 @@
 
 test:
   conflict: 'settings.yml'
+  falsey_value: false
   test_one: 'One'
   test_two:
     test_three: 'Two Three'

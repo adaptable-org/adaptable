@@ -105,12 +105,12 @@ class Settings
       value.nil? ? default.call : value
     end
 
-    def method_missing(key, *nested_keys)
+    def method_missing(key, *nested_keys, &default)
       value = lookup(key, *nested_keys)
 
-      value = yield if value.nil? && block_given?
+      value = default.call if value.nil? && block_given?
 
-      value.present? ? value : super
+      value.nil? ? super : value
     end
 
     # rubocop:disable Style/OptionalBooleanParameter

@@ -61,12 +61,20 @@ class SettingsTest < ActiveSupport::TestCase
     end
   end
 
+  test "considers `false` a valid return value for a config setting via any method" do
+    # Accidentally relying on || or ||= could mean unintentionally discarding the value when it's false
+    assert_equal false, Settings.config(:falsey_value)
+    assert_equal false, Settings.optional(:falsey_value)
+    assert_equal false, Settings.required(:falsey_value)
+    assert_equal false, (Settings.default(:falsey_value) { true })
+    assert_equal false, Settings.falsey_value
+    assert_equal false, (Settings.falsey_value { true })
+  end
+
   test "allows bypassing methods and using keys directly via method_missing" do
-    assert Settings.respond_to?(:test_one)
-    assert_equal 'One', Settings.test_one
-    assert_equal 'Two Three', Settings.test_two(:test_three)
     @all_values.each do |expected_value, keys|
       method_name, *keys = keys
+      assert Settings.respond_to?(method_name)
       assert_equal expected_value, Settings.__send__(method_name, *keys), "method_missing failed to match #{keys.inspect} and return #{expected_value}"
     end
   end
@@ -85,10 +93,7 @@ class SettingsTest < ActiveSupport::TestCase
 
   test "returns the default when a default lookup does not have a match" do
     assert_equal @default_return_value, Settings.default(:this_key_does_not_exist_anywhere) { @default_return_value }
-    assert_equal @default_return_value, Settings.default(:test_two_secret, :this_key_does_not_exist_anywhere) { @default_return_value }
-    assert_equal @default_return_value, Settings.default(:this_key_does_not_exist_anywhere) { @default_return_value }
     assert_equal @default_return_value, Settings.default(:test_two, :this_key_does_not_exist_anywhere) { @default_return_value }
-    assert_equal @default_return_value, Settings.default(:this_key_does_not_exist_anywhere) { @default_return_value }
   end
 
   test "raises exception when retrieving values using non-symbol params" do
