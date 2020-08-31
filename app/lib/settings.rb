@@ -29,9 +29,9 @@
 #   Settings.optional(:key)               # Returns the value
 #   Settings.optional(:key_one, :key_two) # Returns the value of the nested keys
 #   Settings.optional(:missing)           # Returns nil
-#   Settings.critical(:key)               # Returns the value
-#   Settings.critical(:key_one, :key_two) # Returns the value of the nested keys
-#   Settings.critical(:missing)           # Raises exception when a critical value is missing
+#   Settings.required(:key)               # Returns the value
+#   Settings.required(:key_one, :key_two) # Returns the value of the nested keys
+#   Settings.required(:missing)           # Raises exception when a critical value is missing
 #   Settings.default(:key) { 'Default' }  # Provides a predictable interface for providing defaults inline.
 
 class Settings
@@ -73,9 +73,9 @@ class Settings
 
     # Raises an exception if all potential sources are nil
     #
-    #   Settings.critical(:key) # => value for :key
-    #   Settings.critical(:missing_key) # => Raises Settings::MissingError
-    def critical(key, *nested_keys)
+    #   Settings.required(:key) # => value for :key
+    #   Settings.required(:missing_key) # => Raises Settings::MissingError
+    def required(key, *nested_keys)
       value = lookup(key, *nested_keys)
 
       # Critical settings must be present. Best to fail now.

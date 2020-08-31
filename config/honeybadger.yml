@@ -1,2 +1,2 @@
 ---
-api_key: <%= Settings.critical(:honeybadger, :api_key) %>
+api_key: <%= Settings.required(:honeybadger, :api_key) %>

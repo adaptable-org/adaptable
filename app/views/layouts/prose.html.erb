@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @title || Settings.critical(:brand, :name) %></title>
+    <title><%= @title || Settings.required(:brand, :name) %></title>
     <%= render 'partials/head' %>
   </head>
 

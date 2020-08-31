@@ -49,9 +49,9 @@ class SettingsTest < ActiveSupport::TestCase
     end
   end
 
-  test "performs .critical lookups across all sources with varying key depths" do
+  test "performs .required lookups across all sources with varying key depths" do
     @all_values.each do |expected_value, keys|
-      assert_equal expected_value, Settings.critical(*keys), "failed to match #{keys.inspect} and return #{expected_value}"
+      assert_equal expected_value, Settings.required(*keys), "failed to match #{keys.inspect} and return #{expected_value}"
     end
   end
 
@@ -83,7 +83,7 @@ class SettingsTest < ActiveSupport::TestCase
     assert_raises(ArgumentError) { Settings.config(:test_one, 'test_three') }
     assert_raises(ArgumentError) { Settings.env('example') }
     assert_raises(ArgumentError) { Settings.optional('example') }
-    assert_raises(ArgumentError) { Settings.critical('example') }
+    assert_raises(ArgumentError) { Settings.required('example') }
     assert_raises(ArgumentError) { Settings.default('example') { @default_return_value } }
   end
 
@@ -91,9 +91,9 @@ class SettingsTest < ActiveSupport::TestCase
     assert_raises(Settings::ConflictError) { Settings.optional(:conflict) }
   end
 
-  test "raises exception when a critical lookup has no match" do
-    assert_raises(Settings::MissingError) { Settings.critical(:this_key_does_not_exist_anywhere) }
-    assert_raises(Settings::MissingError) { Settings.critical(:test_two_secret, :this_key_does_not_exist_anywhere) }
+  test "raises exception when a required lookup has no match" do
+    assert_raises(Settings::MissingError) { Settings.required(:this_key_does_not_exist_anywhere) }
+    assert_raises(Settings::MissingError) { Settings.required(:test_two_secret, :this_key_does_not_exist_anywhere) }
   end
 
   test "raises exception when a default lookup is used without providing a default block whether a match exists or not" do
