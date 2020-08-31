@@ -55,10 +55,25 @@ class SettingsTest < ActiveSupport::TestCase
     end
   end
 
-  test "peforms .default lookups across all sources with varying key depths" do
+  test "performs .default lookups across all sources with varying key depths" do
     @all_values.each do |expected_value, keys|
       assert_equal expected_value, Settings.default(*keys) { @default_return_value }, "failed to match #{keys.inspect} and return #{expected_value}"
     end
+  end
+
+  test "allows bypassing methods and using keys directly via method_missing" do
+    assert Settings.respond_to?(:test_one)
+    assert_equal 'One', Settings.test_one
+    assert_equal 'Two Three', Settings.test_two(:test_three)
+    @all_values.each do |expected_value, keys|
+      method_name, *keys = keys
+      assert_equal expected_value, Settings.__send__(method_name, *keys), "method_missing failed to match #{keys.inspect} and return #{expected_value}"
+    end
+  end
+
+  test "allows returning a default value block using keys directly via method_missing" do
+    assert_equal @default_return_value, (Settings.nonexistent { @default_return_value })
+    assert_equal @default_return_value, Settings.test_two(:nonexistent) { @default_return_value }
   end
 
   test "discards env.yml values when they have already been set" do

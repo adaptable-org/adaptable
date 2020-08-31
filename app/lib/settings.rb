@@ -14,25 +14,34 @@
 #   ENV.fetch('ENV_VAR', 'Default')
 #   ENV.fetch('ENV_VAR') { 'Default' }
 #
-# Values can be accessed like...
+# Settings provides a set of source-indifferent lookup options that respond differently when a match isn't found.
+# With all source-indifferent lookups, if multiple matches are found, they will raise an exception to prevent
+# accidentally using the wrong value from settings.yml when you wanted the value from production.yml.enc.
+#
+#   Settings.optional(:key)               # => Returns the value
+#   Settings.optional(:key_one, :key_two) # => Returns the value of the nested keys
+#   Settings.optional(:missing)           # => Returns nil
+#   Settings.required(:key)               # => Returns the value
+#   Settings.required(:key_one, :key_two) # => Returns the value of the nested keys
+#   Settings.required(:missing)           # => Raises exception when a critical value is missing
+#   Settings.default(:key) { 'Default' }  # => Provides a predictable interface for providing defaults inline.
+#
+# For convenience and syntactic sugar, optional and default lookups can use the key names directly.
+# This will not work as a substitute for required lookups.
+#
+#   Settings.key                              # => Same as Settings.optional(:key)
+#   Settings.key_one(:key_two)                # => Same as Settings.optional(:key_one, :key_two)
+#   Settings.key { 'Default' }                # => Same as Settings.default(:key) { 'Default' }
+#   Settings.key_one(:key_two) { 'Default' }  # => Same as Settings.default(:key_one, :key_two) { 'Default' }
+#
+# Values can also be accessed by their expected source location as well. If there's a case where there are source
+# conflicts with multiple sources, those can be avoided by specifying the source like so:
 #
 #   Settings.secret(:secret_key_base)
 #   Settings.secret(:aws, :secret_key)
 #   Settings.config(:public_key)
 #   Settings.config(:domain, :name)
 #   Settings.env(:env_var)
-#
-# Or, a source-indifferent lookup could be used so that it responds differently when a match isn't found.
-# With all source-indifferent lookups, if multiple matches are found, they will raise an exception to prevent
-# accidentally using the wrong value from settings.yml when you wanted the value from production.yml.enc.
-#
-#   Settings.optional(:key)               # Returns the value
-#   Settings.optional(:key_one, :key_two) # Returns the value of the nested keys
-#   Settings.optional(:missing)           # Returns nil
-#   Settings.required(:key)               # Returns the value
-#   Settings.required(:key_one, :key_two) # Returns the value of the nested keys
-#   Settings.required(:missing)           # Raises exception when a critical value is missing
-#   Settings.default(:key) { 'Default' }  # Provides a predictable interface for providing defaults inline.
 
 class Settings
   class ConflictError < ::StandardError; end
@@ -96,7 +105,22 @@ class Settings
       value.nil? ? default.call : value
     end
 
-    protected
+    def method_missing(key, *nested_keys)
+      value = lookup(key, *nested_keys)
+
+      value = yield if value.nil? && block_given?
+
+      value.present? ? value : super
+    end
+
+    # rubocop:disable Style/OptionalBooleanParameter
+    # Overriding respond_to_missing? and can't change the inherited interface
+    def respond_to_missing?(key, include_private = false)
+      [secret(key), config(key), env(key)].any? || super
+    end
+    # rubocop:enable Style/OptionalBooleanParameter
+
+    private
 
       def lookup(key, *nested_keys)
         values = possible_values(key, *nested_keys).compact
