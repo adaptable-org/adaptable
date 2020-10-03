@@ -61,6 +61,12 @@ namespace :code do
       quiet: '',
       max_exit_status: 0,
     },
+    alex: {
+      review: 'yarn alex',
+      format: '',
+      quiet: '--quiet',
+      max_exit_status: 0,
+    },
   }
 
   desc 'Kicks off Guard with a bundler/yarn run'
@@ -83,7 +89,7 @@ namespace :code do
   namespace :review do
 
     desc 'Runs all dependency, tests, security, and syntax checks in order of risk/importance'
-    task all: %w[dependencies tests security syntax coverage]
+    task all: %w[dependencies tests security syntax language coverage]
 
     desc 'Audits Bundler and Yarn dependencies'
     task :dependencies do
@@ -107,7 +113,12 @@ namespace :code do
 
     desc 'Runs syntax checks'
     task :syntax do
-      review_group(:syntax, %i[rubocop stylelint eslint prettier])
+      review_group(:syntax, %i[rubocop stylelint eslint prettier alex])
+    end
+
+    desc 'Runs language checks'
+    task :language do
+      review_group(:language, %i[alex])
     end
 
     desc 'Runs minitest and opens the coverage report'

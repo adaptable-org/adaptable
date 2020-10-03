@@ -1,5 +1,7 @@
 # Adaptable.org
 
+<!--alex ignore easy-->
+
 Adaptable the organization exists to help amputees more easily pursue and enjoy movement and activities. It is a 501(c)3 charitable organization.
 
 Adaptable.org, this application, serves as the primary channel for helping amputees and is designed so that all work can happen in public and is available for anyone to use and contiribute to.

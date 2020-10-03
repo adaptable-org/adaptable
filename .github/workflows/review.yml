@@ -53,6 +53,9 @@ jobs:
       - name: Syntax
         run: |
           bundle exec rails code:review:syntax
+      - name: Language
+        run: |
+          bundle exec rails code:review:language
 
   tests:
     name: Automated Tests
