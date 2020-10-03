@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.10.0'
 gem 'bootsnap', '>= 1.4.8', require: false
 
 # Exception handling
-gem "honeybadger", "~> 4.6"
+gem "honeybadger", "~> 4.7.2"
 
 # For Markdown Processing/Rendering
 gem 'redcarpet', '~> 3.5'
