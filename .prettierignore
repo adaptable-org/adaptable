@@ -1,6 +1,7 @@
 .byebug_history
 .yarn-integrity
 /.bundle
+/.github
 /bin/*
 /config/*
 /coverage/*
