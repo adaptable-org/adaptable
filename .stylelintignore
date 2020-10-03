@@ -23,6 +23,7 @@ package.json
 Gemfile.lock
 LICENSE
 Procfile
+Procfile.dev
 site.webmanifest
 yarn-debug.log*
 *.text.erb
