@@ -113,7 +113,7 @@ namespace :code do
 
     desc 'Runs syntax checks'
     task :syntax do
-      review_group(:syntax, %i[rubocop stylelint eslint prettier alex])
+      review_group(:syntax, %i[rubocop stylelint eslint prettier])
     end
 
     desc 'Runs language checks'
