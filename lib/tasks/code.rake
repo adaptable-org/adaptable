@@ -70,13 +70,13 @@ namespace :code do
     exec 'bundle exec guard'
   end
 
-  desc "Shortcut for reviewing everything"
+  desc 'Shortcut for reviewing everything'
   task review: 'review:all'
 
-  desc "Shortcut for formatting everything"
+  desc 'Shortcut for formatting everything'
   task format: 'format:all'
 
-  desc "Shortcut for coverage"
+  desc 'Shortcut for coverage'
   task cov: 'review:coverage'
 
   desc 'Handles the various automated tests and static analysis tasks'
