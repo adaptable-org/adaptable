@@ -17,6 +17,7 @@ namespace :dev do
 
   desc 'Wipes out and rebuilds all the things locally for a fresh start'
   task refresh: %i[tmp:clear log:clear assets:clobber] do
+    system("rm -rf ./node_modules")
     system("yarn install")
   end
 

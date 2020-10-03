@@ -3,6 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+// Tailwind CSS
+import 'tailwind/tailwind'
+import 'stylesheets/application'
+
 // Rails JS
 require('@rails/ujs').start()
 require('turbolinks').start()
@@ -14,7 +18,3 @@ require('channels')
 // JavaScript: `imagePath` JavaScript helper below.
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
-
-// Tailwind CSS
-import 'tailwind/tailwind'
-import 'stylesheets/application'
