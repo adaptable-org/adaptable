@@ -1,4 +1,4 @@
-desc 'Wraps all things deploy for safter, easier, and more consistent usage'
+desc 'Wraps all things deploy for safer, easier, and more consistent usage'
 namespace :ops do
   desc 'Puts up the maintenance page via Heroku'
   task :disable do
