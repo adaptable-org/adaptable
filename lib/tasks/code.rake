@@ -67,8 +67,6 @@ namespace :code do
   task :watch do
     return unless Rails.env.development?
 
-    system 'yarn install'
-    system 'bundle install'
     exec 'bundle exec guard'
   end
 
