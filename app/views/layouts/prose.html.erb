@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= @title || Settings.required(:brand, :name) %></title>
     <%= render 'partials/head' %>
   </head>
 
-  <body>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto">
-        <article class="prose prose-lg text-gray-500 mx-auto">
-          <%= yield %>
-        </article>
+  <body class="bg-adpt-navy">
+    <div class="container bg-adpt-navy">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <%= render 'partials/header' %>
+        <div class="max-w-3xl mx-auto">
+          <article class="prose prose-lg text-gray-500 mx-auto">
+            <%= yield %>
+          </article>
+        </div>
+        <%= render 'partials/footer' %>
       </div>
     </div>
   </body>

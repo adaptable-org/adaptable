@@ -1,24 +1,64 @@
 <% base_name = 'Adaptable' %>
 
+org_defaults: &org_defaults
+  name: <%= base_name %>
+  ein: 83-4538608
+  corporate: <%= base_name %>, Inc.
+  domain: <%= base_name %>.org
+  about: Helping amputees more easily pursue and enjoy movement and activities
+
+contact_defaults: &contact_defaults
+  email: info@<%= base_name.downcase %>.org
+  po_box: 1291
+  city: Crested Butte
+  state: Colorado
+  state_short: CO
+  postal: 81224
+
+meta_defaults: &meta_defaults
+  description: Helping amputees more easily pursue and enjoy movement and activities through information about adaptive sports and financial assistance.
+  keywords: amputee, amputation, sports, activities
+  author: <%= base_name %>, Inc. Team
+  canonical_base: https://<%= base_name.downcase %>.org
+
+production:
+  org:
+    <<: *org_defaults
+  contact:
+    <<: *contact_defaults
+  meta:
+    <<: *meta_defaults
+staging:
+  org:
+    <<: *org_defaults
+    domain: <%= base_name %>.one
+  contact:
+    <<: *contact_defaults
+  meta:
+    <<: *meta_defaults
+    canonical_base: https://<%= base_name.downcase %>.one
+development:
+  org:
+    <<: *org_defaults
+    domain: <%= base_name %>.test
+  contact:
+    <<: *contact_defaults
+  meta:
+    <<: *meta_defaults
+  canonical_base: https://<%= base_name.downcase %>.test
 test:
+  org:
+    <<: *org_defaults
+    domain: <%= base_name %>.test
+  contact:
+    <<: *contact_defaults
+  meta:
+    <<: *meta_defaults
+    canonical_base: https://<%= base_name.downcase %>.test
+  # Remaining values are just for testing.
   conflict: 'settings.yml'
   falsey_value: false
   test_one: 'One'
   test_two:
     test_three: 'Two Three'
   test_erb: <%= "#{Rails.env}" %>
-  brand:
-    name: <%= base_name %> (Test)
-    domain: <%= base_name %>.org (Test)
-development:
-  brand:
-    name: <%= base_name %> (Dev)
-    domain: <%= base_name %>.org (Dev)
-staging:
-  brand:
-    name: <%= base_name %> (Staging)
-    domain: <%= base_name %>.org (Staging)
-production:
-  brand:
-    name: <%= base_name %>
-    domain: <%= base_name %>.org

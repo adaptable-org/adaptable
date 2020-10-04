@@ -14,7 +14,7 @@ class SettingsTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLeng
       'One' => %i[test_one],
       'Two Three' => %i[test_two test_three],
       'test' => %i[test_erb],
-      'Adaptable (Test)' => %i[org name],
+      'Adaptable' => %i[org name],
       'Adaptable.test' => %i[org domain]
     }
     @env = {

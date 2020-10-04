@@ -8,10 +8,7 @@ module.exports = {
     ],
   },
   theme: {
-    fontFamily: {
-      display: ['Helvetica', 'Arial', 'sans-serif'],
-      body: ['Georgia', 'Times', 'serif'],
-    },
+    fontFamily: {},
     extend: {
       colors: {
         'adpt-navy': '#111c4c',
