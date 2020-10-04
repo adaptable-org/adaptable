@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class SettingsTest < ActiveSupport::TestCase
+class SettingsTest < ActiveSupport::TestCase # rubocop:disable Metrics/ClassLength
   # rubocop:disable Metrics/MethodLength
   def setup
     @default_return_value = 'Default Return Value'
@@ -14,8 +14,8 @@ class SettingsTest < ActiveSupport::TestCase
       'One' => %i[test_one],
       'Two Three' => %i[test_two test_three],
       'test' => %i[test_erb],
-      'Adaptable (Test)' => %i[brand name],
-      'Adaptable.org (Test)' => %i[brand domain]
+      'Adaptable (Test)' => %i[org name],
+      'Adaptable.test' => %i[org domain]
     }
     @env = {
       'example' => %i[example],
@@ -62,7 +62,7 @@ class SettingsTest < ActiveSupport::TestCase
   end
 
   test "considers `false` a valid return value for a config setting via any method" do
-    # Accidentally relying on || or ||= could mean unintentionally discarding the value when it's false
+    # Accidentally relying on || or ||= could mean unintentionally discarding the value when it's explicitly false
     assert_equal false, Settings.config(:falsey_value)
     assert_equal false, Settings.optional(:falsey_value)
     assert_equal false, Settings.required(:falsey_value)
@@ -77,6 +77,12 @@ class SettingsTest < ActiveSupport::TestCase
       assert Settings.respond_to?(method_name)
       assert_equal expected_value, Settings.__send__(method_name, *keys), "method_missing failed to match #{keys.inspect} and return #{expected_value}"
     end
+  end
+
+  test "raises no method error for a non-existent root setting" do
+    symbol = :method_missing_symbol
+    refute Settings.respond_to?(symbol)
+    assert_raises(NoMethodError) { Settings.__send__(symbol) }
   end
 
   test "allows returning a default value block using keys directly via method_missing" do
