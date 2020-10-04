@@ -18,7 +18,7 @@ class ProseController < ApplicationController
   def accessibility
   end
 
-  def feedback
+  def contact
   end
 
   protected

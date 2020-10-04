@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get 'terms', to: 'prose#terms', as: :terms_page
   get 'security', to: 'prose#security', as: :security_page
   get 'accessibility', to: 'prose#accessibility', as: :accessibility_page
-  get 'feedback', to: 'prose#feedback', as: :feedback_page
+  get 'contact', to: 'prose#contact', as: :contact_page
 end

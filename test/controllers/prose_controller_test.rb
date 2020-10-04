@@ -28,8 +28,8 @@ class ProseControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get feedback" do
-    get feedback_page_url
+  test "should get contact" do
+    get contact_page_url
     assert_response :success
   end
 end
