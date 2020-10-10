@@ -22,6 +22,14 @@ namespace :dev do
     system("yarn install")
   end
 
+  desc 'rbenv convenience for available Ruby versions'
+  task :rubies do
+    # Make sure we have the latest full list.
+    system("brew upgrade rbenv ruby-build")
+    # Show all available core ruby versions
+    system("rbenv install --list-all | grep --color '^[2-3]\.[0-9]\.[0-9]-*.*$'")
+  end
+
   desc 'Installs dependencies'
   task :install do
     system("yarn install")
