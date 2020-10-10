@@ -40,6 +40,10 @@
 /config/credentials/staging.key
 /config/credentials/production.key
 
+# Ignore docs as they can be generated via `rake dev:doc`
+/.yardoc
+/doc
+
 /public/packs
 /public/packs-test
 /node_modules

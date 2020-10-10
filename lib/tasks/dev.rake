@@ -1,6 +1,6 @@
 desc 'Wraps all things dev environment for more convenient usage'
 namespace :dev do
-  desc 'Wipes out and rebuilds all the things locally for a fresh start'
+  desc 'Ensures foundational thing are in place'
   task verify: %i[webpacker:check_node webpacker:check_yarn webpacker:verify_install] do
   end
 
@@ -20,6 +20,12 @@ namespace :dev do
   task refresh: %i[tmp:clear log:clear assets:clobber] do
     system("rm -rf ./node_modules")
     system("yarn install")
+  end
+
+  desc 'Builds and opens documentation'
+  task :doc do
+    system("be yard doc")
+    system("open doc/_index.html")
   end
 
   desc 'rbenv convenience for available Ruby versions'
