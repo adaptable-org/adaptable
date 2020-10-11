@@ -66,7 +66,7 @@ namespace :code do
       format: '',
       quiet: '--quiet',
       max_exit_status: 0,
-    },
+    }
   }
 
   desc 'Kicks off Guard with a bundler/yarn run'
@@ -119,6 +119,24 @@ namespace :code do
     desc 'Runs language checks'
     task :language do
       review_group(:language, %i[alex])
+    end
+
+    desc 'Runs checks for documentation coverage'
+    task :docs do
+      require 'yardstick/rake/measurement'
+      require 'yardstick/rake/verify'
+
+      options = YAML.load_file('./.yardstick.yml')
+
+      task = Yardstick::Rake::Measurement.new(:yardstick_measure, options)
+      task.yardstick_measure
+
+      task = Yardstick::Rake::Verify.new(:verify_measurements, options)
+      task.verify_measurements
+    rescue
+      # Output the failures
+      system('cat ./measurements/report.txt')
+      raise
     end
 
     desc 'Runs minitest and opens the coverage report'

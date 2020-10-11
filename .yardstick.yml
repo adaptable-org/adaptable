@@ -1,0 +1,38 @@
+---
+threshold: 100
+path:
+  - './app/lib/**/*.rb'
+  - './app/models/**/*.rb'
+  - './app/helpers/**/*.rb'
+  - './app/services/**/*.rb'
+rules:
+  ApiTag::Presence:
+    enabled: false
+    exclude: []
+  ApiTag::Inclusion:
+    enabled: false
+    exclude: []
+  ApiTag::ProtectedMethod:
+    enabled: true
+    exclude: []
+  ApiTag::PrivateMethod:
+    enabled: true
+    exclude: []
+  ExampleTag:
+    enabled: true
+    exclude: []
+  ReturnTag:
+    enabled: true
+    exclude: []
+  Summary::Presence:
+    enabled: true
+    exclude: []
+  Summary::Length:
+    enabled: true
+    exclude: []
+  Summary::Delimiter:
+    enabled: true
+    exclude: []
+  Summary::SingleLine:
+    enabled: true
+    exclude: []

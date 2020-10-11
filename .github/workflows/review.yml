@@ -56,7 +56,9 @@ jobs:
       - name: Language
         run: |
           bundle exec rails code:review:language
-
+      - name: Documentation
+        run: |
+          bundle exec rails code:review:docs
   tests:
     name: Automated Tests
     runs-on: ubuntu-latest

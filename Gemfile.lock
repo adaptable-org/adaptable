@@ -279,6 +279,8 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.25)
+    yardstick (0.9.9)
+      yard (~> 0.8, >= 0.8.7.2)
     zeitwerk (2.4.0)
 
 PLATFORMS
@@ -318,6 +320,7 @@ DEPENDENCIES
   webdrivers
   webpacker (~> 5.2.1)
   yard (~> 0.9.25)
+  yardstick (~> 0.9.9)
 
 RUBY VERSION
    ruby 2.7.2p137

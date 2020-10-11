@@ -53,6 +53,7 @@ group :development do
   # Documenation
   gem 'annotate', '~> 3.1', '>= 3.1.1'
   gem 'yard', '~> 0.9.25'
+  gem 'yardstick', '~> 0.9.9'
 
   # Quality Control
   gem 'brakeman', '~> 4.9.0'
