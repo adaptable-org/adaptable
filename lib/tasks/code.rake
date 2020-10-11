@@ -13,59 +13,53 @@ namespace :code do
   # See: https://classic.yarnpkg.com/en/docs/cli/audit#toc-yarn-audit
   CHECKS = {
     yarn: {
-      review: 'yarn audit --level moderate',
+      command: 'yarn audit --level moderate',
       quiet: '',
       max_exit_status: 3,
     },
     bundler: {
-      review: 'bundle exec bundle-audit check --update',
+      command: 'bundle exec bundle-audit check --update',
       quiet: '--quiet',
-      max_exit_status: 0,
     },
     minitest: {
-      review: 'COVERAGE=true DISABLE_SPRING=1 bundle exec rails test',
+      command: 'COVERAGE=true DISABLE_SPRING=1 bundle exec rails test',
       quiet: '',
-      max_exit_status: 0,
     },
     system_tests: {
-      review: 'DISABLE_SPRING=1 bundle exec rails test:system',
+      command: 'DISABLE_SPRING=1 bundle exec rails test:system',
       quiet: '',
-      max_exit_status: 0,
     },
     brakeman: {
-      review: 'bundle exec brakeman',
+      command: 'bundle exec brakeman',
       quiet: '--quiet',
-      max_exit_status: 0,
     },
     rubocop: {
-      review: 'bundle exec rubocop --parallel',
+      command: 'bundle exec rubocop --parallel',
       format: 'bundle exec rubocop --auto-correct',
       quiet: '--format q',
-      max_exit_status: 0,
     },
     stylelint: {
-      review: 'yarn stylelint .',
+      command: 'yarn stylelint .',
       format: 'yarn stylelint --fix .',
       quiet: '--quiet',
-      max_exit_status: 0,
     },
     eslint: {
-      review: 'yarn eslint .',
+      command: 'yarn eslint .',
       format: 'yarn eslint --fix .',
       quiet: '--quiet',
-      max_exit_status: 0,
     },
     prettier: {
-      review: 'yarn prettier --check .',
+      command: 'yarn prettier --check .',
       format: 'yarn prettier --write .',
       quiet: '',
-      max_exit_status: 0,
     },
     alex: {
-      review: 'yarn alex',
-      format: '',
+      command: 'yarn alex',
       quiet: '--quiet',
-      max_exit_status: 0,
+    },
+    yardstick: {
+      command: 'bundle exec rake code:review:docs',
+      quiet: '',
     }
   }
 
@@ -82,28 +76,20 @@ namespace :code do
   desc 'Shortcut for formatting everything'
   task format: 'format:all'
 
-  desc 'Shortcut for coverage'
-  task cov: 'review:coverage'
-
   desc 'Handles the various automated tests and static analysis tasks'
   namespace :review do
 
     desc 'Runs all dependency, tests, security, and syntax checks in order of risk/importance'
-    task all: %w[dependencies tests security syntax language coverage]
+    task all: %w[dependencies tests security syntax language documentation coverage]
 
     desc 'Audits Bundler and Yarn dependencies'
     task :dependencies do
       review_group(:dependency, %i[yarn bundler])
     end
 
-    desc 'Runs minitest'
+    desc 'Runs minitest and system tests'
     task :tests do
-      review_group(:testing, %i[minitest])
-    end
-
-    desc 'Runs system tests'
-    task :system do
-      review_group(:testing, %i[system_tests])
+      review_group(:testing, %i[minitest system_tests])
     end
 
     desc 'Runs static analysis security checks'
@@ -121,7 +107,17 @@ namespace :code do
       review_group(:language, %i[alex])
     end
 
-    desc 'Runs checks for documentation coverage'
+    desc 'Runs language checks'
+    task :documentation do
+      review_group(:documentation, %i[yardstick])
+    end
+
+    desc 'Runs minitest and opens the coverage report'
+    task coverage: %i[tests] do
+      system 'open coverage/index.html'
+    end
+
+    desc 'Runs yardstick checks'
     task :docs do
       require 'yardstick/rake/measurement'
       require 'yardstick/rake/verify'
@@ -139,18 +135,13 @@ namespace :code do
       raise
     end
 
-    desc 'Runs minitest and opens the coverage report'
-    task coverage: %i[tests] do
-      system 'open coverage/index.html'
-    end
-
     private
 
       def review_group(group_name, group_checks)
         failures = []
         group_name = group_name.capitalize
 
-        puts "#{group_name} Review:"
+        puts "#{group_name}:"
         group_checks.map { |check| failures << review_one(check) }
         puts "\n"
 
@@ -164,10 +155,10 @@ namespace :code do
       def review_one(check_symbol)
         # Must have a relevant review command to run
         raise InvalidCheck, "':#{check_symbol}' - #{CHECKS.keys}" unless CHECKS.dig(check_symbol)
-        raise MissingReviewCommand, "No review command for #{check_symbol}" unless CHECKS.dig(check_symbol, :review)
+        raise MissingReviewCommand, "No review command for #{check_symbol}" unless CHECKS.dig(check_symbol, :command)
 
         check = CHECKS.dig(check_symbol)
-        command = CHECKS.dig(check_symbol, :review)
+        command = CHECKS.dig(check_symbol, :command)
 
         if Rails.env.development?
           # Note which check is running...
@@ -179,7 +170,7 @@ namespace :code do
           system(command)
         end
 
-        safe_exit_status = $?.exitstatus <= check[:max_exit_status]
+        safe_exit_status = $?.exitstatus <= check.fetch(:max_exit_status, 0)
 
         if safe_exit_status
           puts " ✔"

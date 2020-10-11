@@ -6,8 +6,10 @@
 /bin/*
 /config/*
 /coverage/*
+/doc/*
 /lib/tasks/*
 /log/*
+/measurements/*
 /node_modules
 /public/assets
 /public/packs

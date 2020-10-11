@@ -4,7 +4,9 @@
 /bin/*
 /config/*
 /coverage/*
+/doc/*
 /log/*
+/measurements/*
 /node_modules
 /public/assets
 /public/packs
