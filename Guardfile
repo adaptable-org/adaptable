@@ -12,8 +12,8 @@ group :bundler, halt_on_fail: true, all_on_start: true do
   end
 
   guard :shell do
-    watch(%r{^package.json$})      { `yarn audit --level moderate` }
-    watch(%r{^yarnfile.lock$})     { `yarn audit --level moderate` }
+    watch(%r{^package.json$})  { `yarn audit --level moderate` }
+    watch(%r{^yarnfile.lock$}) { `yarn audit --level moderate` }
   end
 end
 
