@@ -67,6 +67,7 @@ group :development do
   gem 'guard-bundler-audit', '~> 0.1.4'
   gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
   gem 'guard-rubocop', '~> 1.3'
+  gem 'guard-shell', '~> 0.7.1'
 end
 
 group :test do

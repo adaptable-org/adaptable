@@ -10,6 +10,11 @@ group :bundler, halt_on_fail: true, all_on_start: true do
   guard :bundler_audit do
     watch('Gemfile.lock')
   end
+
+  guard :shell do
+    watch(%r{^package.json$})      { `yarn audit --level moderate` }
+    watch(%r{^yarnfile.lock$})     { `yarn audit --level moderate` }
+  end
 end
 
 group :code, halt_on_fail: true, all_after_pass: true, all_on_start: true do
