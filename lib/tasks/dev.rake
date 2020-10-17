@@ -10,15 +10,11 @@ namespace :dev do
   end
 
   desc 'Runs all the possible steps to get the server to pick up changes'
-  task reset: %i[dev:refresh] do
+  task reset: %i[tmp:clear log:clear assets:clobber] do
+    system("rm -rf ./node_modules")
     system("touch tmp/restart.txt")
     system("puma-dev -stop")
     system("overmind quit")
-  end
-
-  desc 'Wipes out and rebuilds all the things locally for a fresh start'
-  task refresh: %i[tmp:clear log:clear assets:clobber] do
-    system("rm -rf ./node_modules")
     system("yarn install")
   end
 

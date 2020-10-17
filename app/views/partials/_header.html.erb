@@ -5,7 +5,7 @@
         <%= image_pack_tag 'adaptable_stacked.svg', size: '192x74', alt: 'Adaptable', class: 'pb-6 md:pb-0' %>
       </a>
       <div class="text-center md:text-right">
-        <p class="leading-1 font-extrabold tracking-tight text-3xl text-white font-bold pb-4 md:pb-2 md:text-xl"><%= Settings.required(:org, :about) %></p>
+        <p class="leading-1 font-bold text-3xl text-white font-bold pb-4 md:pb-2 md:text-xl"><%= Settings.required(:org, :about) %></p>
         <%= link_to "Learn more about #{Settings.required(:org, :name)}", about_page_path, class: 'text-white' %>
       </div>
     </div>

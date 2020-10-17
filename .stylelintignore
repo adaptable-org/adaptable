@@ -32,3 +32,4 @@ yarn-debug.log*
 *.enc
 *.png
 *.ico
+*.woff2

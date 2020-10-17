@@ -5,11 +5,9 @@
   </head>
 
   <body class="bg-adpt-navy">
-    <div class="container bg-adpt-navy">
+    <div class="container bg-adpt-navy max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <%= render 'partials/header' %>
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <%= yield %>
-      </div>
+      <%= yield %>
       <%= render 'partials/footer' %>
     </div>
   </body>
