@@ -33,3 +33,4 @@ yarn-debug.log*
 *.png
 *.ico
 *.woff2
+*.yml

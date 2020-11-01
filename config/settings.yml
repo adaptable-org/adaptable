@@ -40,12 +40,12 @@ staging:
 development:
   org:
     <<: *org_defaults
-    domain: <%= base_name %>.test
+    domain: <%= base_name %>.localhost
   contact:
     <<: *contact_defaults
   meta:
     <<: *meta_defaults
-  canonical_base: https://<%= base_name.downcase %>.test
+  canonical_base: https://<%= base_name.downcase %>.localhost
 test:
   org:
     <<: *org_defaults

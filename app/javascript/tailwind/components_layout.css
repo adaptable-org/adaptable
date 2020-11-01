@@ -1,0 +1,76 @@
+.header {
+  /* Pending */
+}
+.header--landing {
+  @apply mt-12 px-6;
+}
+
+.header__identity {
+  @apply block w-3/4;
+}
+
+.header__purpose {
+  @apply block font-semibold subpixel-antialiased text-white mt-3 text-xl;
+}
+
+.core {
+  /* Pending */
+}
+
+.core--landing {
+  @apply grid grid-cols-1;
+}
+
+.footer {
+  @apply box-border col-span-1 px-6 py-12;
+}
+.footer--landing {
+  @apply mx-auto max-w-6xl py-8;
+}
+
+@screen sm {
+  .header__purpose {
+    @apply text-2xl;
+  }
+}
+
+@screen md {
+  .header--landing {
+    @apply px-8;
+  }
+
+  .header__identity {
+    @apply w-full;
+  }
+
+  .header__purpose {
+    @apply text-lg;
+  }
+
+  .core--landing {
+    @apply grid-cols-3;
+  }
+
+}
+
+@screen lg {
+  .core--landing {
+    @apply gap-8;
+  }
+}
+
+@screen xl {
+
+  .header--landing {
+    @apply col-span-2;
+  }
+
+  .header__purpose {
+    @apply text-xl;
+  }
+
+  .core--landing {
+    @apply grid-cols-5;
+  }
+
+}

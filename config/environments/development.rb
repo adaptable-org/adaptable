@@ -48,7 +48,7 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = '//webpack.adaptable.test'
+  config.action_controller.asset_host = '//webpack.adaptable.localhost'
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -65,5 +65,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.hosts << "adaptable.test"
+  config.hosts << "adaptable.localhost"
 end

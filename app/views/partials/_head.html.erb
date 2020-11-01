@@ -1,14 +1,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title><%= @title || Settings.required(:org, :name) %></title>
 <meta name="description" content="<%= @description || Settings.required(:meta, :description) %>">
 <meta name="keywords" content="amputee, amputation, sports, activities">
 <meta name="author" content="<%= Settings.required(:meta, :author) %>">
 
-<title><%= @title || Settings.required(:org, :name) %></title>
-
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
+
+<meta name="theme-color" content="#111c4c">
+<meta name="msapplication-TileColor" content="#00aba9">
+<link rel="canonical" href="<%= Settings.required(:meta, :canonical_base) %><%= @canonical_path || '/' %>" />
+<link rel="alternate" hreflang="en" href="<%= Settings.required(:meta, :canonical_base) %>">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111c4c">
 
 <link rel="preload" href="<%= asset_pack_url 'media/fonts/AtkinsonHyperlegibleRegular102a.woff2' %>" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<%= asset_pack_url 'media/fonts/AtkinsonHyperlegibleBold102a.woff2' %>" as="font" type="font/woff2" crossorigin>
@@ -17,16 +26,6 @@
 
 <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
 <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
-
-<link rel="canonical" href="<%= Settings.required(:meta, :canonical_base) %><%= @canonical_path || '/' %>" />
-<link rel="alternate" hreflang="en" href="<%= Settings.required(:meta, :canonical_base) %>">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111c4c">
-<meta name="msapplication-TileColor" content="#00aba9">
-<meta name="theme-color" content="#111c4c">
 
 <% if Rails.env.production? -%>
 <script src="https://baldeagle.adaptable.org/script.js" site="ZFXMCRAG" defer></script>

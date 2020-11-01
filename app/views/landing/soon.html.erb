@@ -1,0 +1,78 @@
+<article class="article article--landing">
+  <p class="article__lede">
+    As an amputee, you face endless challenges staying active. Body mechanics change. Everthing hurts. And  each activity often means expensive specialized equipment.
+  </p>
+  <div class="article__body prose prose-xl lg:prose-2xl">
+    <%= markdown(@content) %>
+  </div>
+</article>
+
+<%= render 'partials/mailing_list_form' %>
+
+<section class="section bg-purple-100 border-purple-200">
+  <div class="w-full">
+    <h2 class="text-5xl font-display font-bold text-purple-800 mb-2 lg:mb-3">About <%= Settings.required(:org, :name) %></h2>
+    <p class="font-serif text-gray-900 prose prose-lg lg:prose-xl mb-8">
+      Adaptable.org is designed to help amptuees find information about staying active in a way that's relevant to their specific context and needs. It's a 501(c)3 charitable organization, and all of the software that powers the site and organization is <a href="https://github.com/adaptable-org/" class="text-purple-800">open source</a> and freely available for others to use.
+    </p>
+    <p class="font-serif text-gray-900 prose prose-lg lg:prose-xl mb-8">
+      We're aiming to launch in early 2021 by starting with a searchable database of financial tools and resources availabe to amputees for training, equipment, and other resources to help you pursue and enjoy movement and activity.
+    </p>
+
+    <h3 class="text-4xl font-display font-bold text-purple-600 pt-8 lg:pt-8 mt-4 lg:mt-8 mb-2 lg:mb-3 border-solid border-t border-purple-500 border-opacity-25">The People Making it Happen</h3>
+
+    <p class="font-serif text-gray-900 prose prose-lg lg:prose-xl mb-10">
+      The Adaptable Board is made of individuals with deep knowledge of and first-hand experience with amputation, disabilities, adaptive sports, software, social media, non-profits, and operations. In addition to the formal non-profit board, we're also assembling an advisory board to ensure we have representative perspectives from a diverse group of individuals with different knowledge and experiences.
+    </p>
+  </div>
+
+  <ul class="space-y-12 grid grid-cols-1 lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0">
+    <% @team.each do |key, details| %>
+      <li class="grid grid-cols-5 gap-4 sm:gap-6 space-y-0 lg:gap-8">
+        <div class="relative h-0 pb-2/3 pt-2/3">
+          <%= image_pack_tag("about/board/#{key}_bw.png", class: "absolute inset-0 object-cover h-full w-full shadow-lg rounded-lg", alt: '') %>
+        </div>
+        <div class="col-span-4">
+          <b class="flex flex-row flex-initial flex-no-wrap justify-start items-center text-purple-600 text-2xl leading-normal -mt-1">
+            <%= details[:name] %>
+            <% if details[:link].present? %>
+              <a href="<%= details[:link] %>" class="ml-1 mb-1 text-purple-400 hover:text-purple-500">
+                <span class="sr-only">More about <%= details[:name] %></span>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                </svg>
+              </a>
+            <% end %>
+          </b>
+          <span class="block text-gray-600 text-lg italic leading-snug"><%= details[:role] %></span>
+          <p class="font-serif prose prose-md text-gray-800 mt-1"><%= details[:bio] %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="section bg-teal-100 border-teal-200">
+  <div class="w-full">
+    <h2 class="text-5xl font-display font-bold text-teal-800 mb-2 lg:mb-3">Get in Touch</h2>
+    <p class="font-serif text-gray-900 prose prose-lg lg:prose-xl mb-8">
+      Have questions? Interested in getting involved or helping? Or just want to share knowledge that may help? We're all ears, and we'd love to hear from you.
+    </p>
+
+    <ul>
+      <li>
+        <a href="mailto:<%= Settings.required(:contact, :email) %>" class="font-mono text-2xl text-teal-700">
+          <%= Settings.required(:contact, :email) %>
+        </a>
+      </li>
+      <li>
+        <p class="font-mono text-teal-700 mt-3">
+          <%= Settings.required(:org, :corporate) %><br>
+          PO Box <%= Settings.required(:contact, :po_box) %><br>
+          <%= Settings.required(:contact, :city) %>, <%= Settings.required(:contact, :state_short) %> <%= Settings.required(:contact, :postal) %>
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>

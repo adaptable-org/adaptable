@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render 'partials/head' %>
+  </head>
+
+  <body class="bg-blue-900">
+    <div class="container layout layout--landing">
+
+      <main class="core core--landing">
+        <%= render 'partials/header' %>
+
+        <%= yield %>
+      </main>
+
+      <%= render 'partials/footer' %>
+
+    </div>
+  </body>
+</html>

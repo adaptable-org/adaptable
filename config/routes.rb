@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'landing#soon'
+
+  get 'home', to: 'landing#soon', as: :home
+  get 'confirm', to: 'landing#confirm', as: :confirm
 
   # Static Content Pages
   get 'about', to: 'prose#about', as: :about_page
