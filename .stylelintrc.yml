@@ -3,5 +3,6 @@ extends:
   - stylelint-config-prettier
 rules:
   at-rule-no-unknown:
-    ignoreAtRules:
-      - "screen"
+    - true
+    - ignoreAtRules:
+        - 'screen'

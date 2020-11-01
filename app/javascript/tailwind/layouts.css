@@ -1,4 +1,5 @@
-.layout { /* stylelint-disable-line 0 */
+.layout {
+  /* stylelint-disable-line 0 */
   @apply mx-auto;
 }
 
