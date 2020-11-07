@@ -51,21 +51,4 @@ namespace :dev do
     ENV['RAILS_ENV'] = 'test'
     Rake::Task["db:migrate"].execute
   end
-
-  desc 'Reruns the latest migration for dev and test'
-  task :remigrate do
-    latest_migration = Dir.glob("./db/migrate/*.rb").max_by { |file| File.mtime(file) }
-
-    unless latest_migration.nil?
-      version = latest_migration.match(/.\/db\/migrate\/(\d+)_.+\.rb/)[1]
-      ENV['VERSION'] = version
-
-      Rake::Task["db:migrate:down"].execute
-      Rake::Task["db:migrate"].execute
-
-      ENV['RAILS_ENV'] = 'test'
-      Rake::Task["db:migrate:down"].execute
-      Rake::Task["db:migrate"].execute
-    end
-  end
 end
