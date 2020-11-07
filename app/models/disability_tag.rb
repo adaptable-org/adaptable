@@ -3,6 +3,9 @@
 # Disability tag for organizing resources by disability
 class DisabilityTag < ApplicationRecord
   has_closure_tree
+
+  validates :key, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 end
 
 # == Schema Information

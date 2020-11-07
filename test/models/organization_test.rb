@@ -3,8 +3,24 @@
 require "test_helper"
 
 class OrganizationTest < ActiveSupport::TestCase
-  test "requires key attributes" do
+  test "requires primary attributes" do
     org = Organization.new
+    assert_not org.valid?
+    assert_not_empty org.errors.where(:name)
+    assert_not_empty org.errors.where(:url)
+
+    org.name = 'Example'
+    org.url = 'https://example.com'
+    assert org.valid?
+  end
+
+  test "requires unique names/urls" do
+    org = Organization.new(name: 'Example', url: 'https://example.com')
+    assert org.valid?
+
+    existing_org = organizations(:caf)
+    org.name = existing_org.name
+    org.url = existing_org.url
     assert_not org.valid?
     assert_not_empty org.errors.where(:name)
     assert_not_empty org.errors.where(:url)

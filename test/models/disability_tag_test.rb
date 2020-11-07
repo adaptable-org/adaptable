@@ -3,9 +3,28 @@
 require "test_helper"
 
 class DisabilityTagTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "requires primary attributes" do
+    tag = DisabilityTag.new
+    assert_not tag.valid?
+    assert_not_empty tag.errors.where(:key)
+    assert_not_empty tag.errors.where(:name)
+
+    tag.key = 'disability'
+    tag.name = 'Disability'
+    assert tag.valid?
+  end
+
+  test "requires unique keys/names" do
+    tag = DisabilityTag.new(key: 'disability', name: 'Disability')
+    assert tag.valid?
+
+    existing_tag = disability_tags(:amputation)
+    tag.key = existing_tag.key
+    tag.name = existing_tag.name
+    assert_not tag.valid?
+    assert_not_empty tag.errors.where(:key)
+    assert_not_empty tag.errors.where(:name)
+  end
 end
 
 # == Schema Information

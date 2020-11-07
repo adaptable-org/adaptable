@@ -2,7 +2,7 @@
 
 # Basic model for representing adaptive organizations
 class Organization < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :url, presence: true, uniqueness: true
 end
 
