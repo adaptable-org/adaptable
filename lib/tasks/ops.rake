@@ -31,7 +31,7 @@ namespace :ops do
   end
 
   desc 'Runs a code review, and, if it passes, pushes to the relevant branch to trigger a deploy'
-  task deploy: %i[code:review] do
+  task deploy: %i[code:review:dependencies code:review:tests code:review:security] do
     environment = env(ARGV)
     current_branch = `git rev-parse --abbrev-ref HEAD`.strip
 
