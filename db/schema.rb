@@ -21,21 +21,4 @@ ActiveRecord::Schema.define(version: 2020_11_07_201430) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
-  create_table "tag_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "tag_anc_desc_idx", unique: true
-    t.index ["descendant_id"], name: "tag_desc_idx"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "description"
-    t.integer "parent_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
 end
