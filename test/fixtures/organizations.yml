@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id         :bigint           not null, primary key
+#  name       :string
+#  url        :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+adaptive_sports_cb:
+  name: Adaptive Sports Center
+  url: https://www.adaptivesports.org
+
+abr:
+  name: Amputee Blade Runners
+  url: https://amputeebladerunners.com
+
+caf:
+  name: Challenged Athletes Foundation
+  url: https://www.challengedathletes.org
+
+tasp:
+  name: Telluride Adaptive Sports Program
+  url: https://tellurideadaptivesports.org
