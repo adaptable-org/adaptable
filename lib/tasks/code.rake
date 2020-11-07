@@ -60,6 +60,10 @@ namespace :code do
     yardstick: {
       command: 'bundle exec rake code:review:docs',
       quiet: '',
+    },
+    inch: {
+      command: 'bundle exec inch',
+      quiet: '',
     }
   }
 
@@ -109,7 +113,7 @@ namespace :code do
 
     desc 'Runs language checks'
     task :documentation do
-      review_group(:documentation, %i[yardstick])
+      review_group(:documentation, %i[yardstick inch])
     end
 
     desc 'Runs minitest and opens the coverage report'

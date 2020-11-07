@@ -1,0 +1,5 @@
+files:
+  # define files excluded from the analysis (defaults to [])
+  excluded:
+    - !ruby/regexp /application_/
+    - !ruby/regexp /_controller.rb/

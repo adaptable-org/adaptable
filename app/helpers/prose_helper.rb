@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Convenience methods for views that render long-from prose from Markdown
 module ProseHelper
   # Converts markdown to HTML
   #
