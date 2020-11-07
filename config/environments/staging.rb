@@ -113,4 +113,11 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.hosts << 'staging.adaptable.org'
+
+  # Restrict access with HTTP Basic Auth for staging environment
+  if ENV['HTTP_BASIC_AUTH_CREDENTIALS']
+    config.middleware.use Rack::Auth::Basic do |username, password|
+      ENV['HTTP_BASIC_AUTH_CREDENTIALS'].split(':') == [username, password]
+    end
+  end
 end
