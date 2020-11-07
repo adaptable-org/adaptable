@@ -59,7 +59,7 @@ group :development do
   # Quality Control
   gem 'brakeman', '~> 4.9.0'
   gem 'bundler-audit', '~> 0.7.0.1'
-  gem 'rubocop', '~> 0.89.1'
+  gem 'rubocop', '~> 1.2.0'
 
   # Automating quality control
   gem 'guard', '~> 2.16.2' # NOTE: Needs to be explicitly referenced vs. letting the others pull it in as a dependency

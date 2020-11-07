@@ -180,16 +180,12 @@ class Settings
       value.nil? ? super : value
     end
 
-    # rubocop:disable Style/OptionalBooleanParameter
-    # Overriding respond_to_missing? and can't change the inherited interface
-
     # Ensures class is respond_to? friendly when using method_missing
     #
     # @api private
     def respond_to_missing?(key, include_private = false)
       [secret(key), config(key), env(key)].any? || super
     end
-    # rubocop:enable Style/OptionalBooleanParameter
 
     private
 
