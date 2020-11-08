@@ -27,13 +27,21 @@ class DisabilityTest < ActiveSupport::TestCase
   end
 
   test "suports tag hierarchies" do
-    grandparent = Disability.create(name: 'Grandparent', key: 'grandparent')
-    parent = grandparent.children.create(name: 'Parent', key: 'parent')
-    assert_includes grandparent.children, parent
+    Disability.rebuild!
 
-    # disability = disabilities(:amputation)
-    # assert_includes disability.children, disabilities(:upper_extremity)
-    # assert_includes disability.children, disabilities(:lower_extremity)
+    amputation = disabilities(:amputation)
+    lower_extremity = disabilities(:lower_extremity)
+    below_knee_amputation = disabilities(:below_knee_amputation)
+    above_knee_amputation = disabilities(:above_knee_amputation)
+
+    assert_includes amputation.children, lower_extremity
+    assert_includes amputation.leaves, below_knee_amputation
+    assert_equal lower_extremity.parent, amputation
+
+    assert_includes lower_extremity.children, below_knee_amputation
+    assert_equal below_knee_amputation.parent, lower_extremity
+
+    assert_includes below_knee_amputation.siblings, above_knee_amputation
   end
 end
 
