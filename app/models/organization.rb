@@ -13,7 +13,7 @@ end
 # Table name: organizations
 #
 #  id         :bigint           not null, primary key
-#  key        :string
+#  key        :string           not null
 #  name       :string
 #  url        :string
 #  created_at :datetime         not null
@@ -21,5 +21,5 @@ end
 #
 # Indexes
 #
-#  index_organizations_on_key  (key)
+#  index_organizations_on_key  (key) UNIQUE
 #

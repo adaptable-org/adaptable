@@ -60,7 +60,7 @@ end
 #
 #  id          :bigint           not null, primary key
 #  description :string
-#  key         :string
+#  key         :string           not null
 #  name        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -68,7 +68,7 @@ end
 #
 # Indexes
 #
-#  index_disabilities_on_key        (key)
+#  index_disabilities_on_key        (key) UNIQUE
 #  index_disabilities_on_name       (name)
 #  index_disabilities_on_parent_id  (parent_id)
 #
