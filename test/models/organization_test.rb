@@ -11,16 +11,10 @@ class OrganizationTest < ActiveSupport::TestCase
   test "requires primary attributes" do
     org = Organization.new
     assert_not org.valid?
-    assert_not_empty org.errors.where(:name)
-    assert_not_empty org.errors.where(:url)
 
     name_errors = org.errors.where(:name)
     assert_not_empty name_errors
     assert_equal :blank, name_errors.first.type
-
-    url_errors = org.errors.where(:url)
-    assert_not_empty url_errors
-    assert_equal :blank, url_errors.first.type
   end
 
   test "requires unique keys/names/urls" do

@@ -13,7 +13,6 @@ class DisabilityTest < ActiveSupport::TestCase
     assert_not disability.valid?
 
     name_errors = disability.errors.where(:name)
-
     assert_not_empty name_errors
     assert_equal :blank, name_errors.first.type
   end

@@ -4,8 +4,8 @@
 class Organization < ApplicationRecord
   include Keyable
 
-  validates :name, presence: true, uniqueness: true
-  validates :url, presence: true, uniqueness: true
+  validates :name, uniqueness: true, presence: true
+  validates :url, uniqueness: true
 end
 
 # == Schema Information
