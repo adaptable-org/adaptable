@@ -4,8 +4,18 @@
 class Disability < ApplicationRecord
   has_closure_tree
 
-  validates :key, presence: true, uniqueness: true
-  validates :name, presence: true, uniqueness: true
+  validates :key, uniqueness: true
+  validates :name, uniqueness: true, presence: true
+
+  before_validation :generate_key
+
+  private
+
+    def generate_key
+      return unless name.present? && key.blank?
+
+      self.key = name.parameterize
+    end
 end
 
 # == Schema Information
