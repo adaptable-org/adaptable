@@ -1,0 +1,48 @@
+- name: Amputation
+  parent:
+- name: Lower Extremity
+  description: Leg, Foot, or Toe
+  parent: amputation
+- name: Upper Extremity
+  description: Arm, Hand, or Finger
+  parent: amputation
+- name: Toe Amputation
+  description: Lisfranc
+  parent: lower_extremity
+- name: Partial Foot Amputation
+  description: Chopart, Pirogoff
+  parent: lower_extremity
+- name: Ankle Disarticulation
+  description: Symes, Boyd
+  parent: lower_extremity
+- name: Below-knee Amputation
+  description: Trans-tibial
+  parent: lower_extremity
+- name: Knee Disarticulation
+  parent: lower_extremity
+- name: Above-knee Amputation
+  description: Trans-femoral
+  parent: lower_extremity
+- name: Hip Disarticulation
+  parent: lower_extremity
+- name: Trans-pelvic
+  description: Hemi-pelvectomy
+  parent: lower_extremity
+- name: Finger Amputation
+  parent: upper_extremity
+- name: Partial Hand Amputation
+  parent: upper_extremity
+- name: Wrist Disarticulation
+  parent: upper_extremity
+- name: Below-elbow Amputation
+  description: Trans-radial
+  parent: upper_extremity
+- name: Elbow Disarticulation
+  parent: upper_extremity
+- name: Above-elbow Amputation
+  description: Trans-humoral
+  parent: upper_extremity
+- name: Shoulder Disarticulation
+  parent: upper_extremity
+- name: Forequarter Amputation
+  parent: upper_extremity
