@@ -13,8 +13,15 @@ module Keyable
 
   private
 
+    # Ensures there is a parameterized value in the key attribute
+    #
+    # - When name is present, but key isn't, parameterize the name as key
+    # - When key is present, ensure it's parameterized
+    #
+    # @api @private
+    #
+    # @return [String] parameterized key
     def parameterize_key
-      self.key ||= name if name.present?
-      self.key = key&.parameterize
+      self.key = key&.parameterize || name&.parameterize
     end
 end
