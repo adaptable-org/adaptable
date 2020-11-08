@@ -1,0 +1,28 @@
+- name: Amputee Blade Runners
+  abbreviation: ABR
+  url: https://amputeebladerunners.com
+  disabilities:
+    - lower-extremity
+- name: Adaptive Sports Center
+  url: https://www.adaptivesports.org
+  disabilities:
+    - amputation
+- name: Adaptive Training Foundation
+  abbreviation: ATF
+  url: https://www.adaptivetrainingfoundation.org
+  disabilities:
+    - amputation
+- name: Challenged Athletes Fondation
+  abbreviation: CAF
+  url: https://www.challengedathletes.org
+  disabilities:
+    - amputation
+- name: Move United
+  url: https://www.moveunitedsport.org
+  disabilities:
+    - amputation
+- name: Telluride Adaptive Sports Program
+  abbreviation: TASP
+  url: https://tellurideadaptivesports.org
+  disabilities:
+    - amputation
