@@ -3,18 +3,9 @@
 require "test_helper"
 
 class DisabilityTest < ActiveSupport::TestCase
-  test "generates a parameterized key from the name if a key isn't provided" do
-    disability = Disability.new(name: 'Example Disability')
-    assert_nil disability.key
-    assert disability.valid?
-    assert_equal 'example-disability', disability.key
-  end
-
-  test "does not generate a key from the name if key has a value" do
-    disability_key = 'different-key'
-    disability = Disability.new(name: 'Example Disability', key: disability_key)
-    assert disability.valid?
-    assert_equal disability_key, disability.key
+  test "is keyable" do
+    org = Disability.new(name: 'Example Disability')
+    assert org.private_methods.include?(:parameterize_key)
   end
 
   test "requires primary attributes" do

@@ -3,6 +3,11 @@
 require "test_helper"
 
 class OrganizationTest < ActiveSupport::TestCase
+  test "is keyable" do
+    org = Organization.new(name: 'Example Org', url: 'https://example.com')
+    assert org.private_methods.include?(:parameterize_key)
+  end
+
   test "requires primary attributes" do
     org = Organization.new
     assert_not org.valid?
@@ -18,7 +23,7 @@ class OrganizationTest < ActiveSupport::TestCase
     assert_equal :blank, url_errors.first.type
   end
 
-  test "requires unique names/urls" do
+  test "requires unique keys/names/urls" do
     existing_org = organizations(:caf)
     new_org = Organization.new(
       name: existing_org.name,
@@ -42,8 +47,13 @@ end
 # Table name: organizations
 #
 #  id         :bigint           not null, primary key
+#  key        :string
 #  name       :string
 #  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_organizations_on_key  (key)
 #
