@@ -10,29 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_211733) do
+ActiveRecord::Schema.define(version: 2020_11_07_230024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "disability_tag_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "disability_tag_anc_desc_idx", unique: true
-    t.index ["descendant_id"], name: "disability_tag_desc_idx"
-  end
-
-  create_table "disability_tags", force: :cascade do |t|
+  create_table "disabilities", force: :cascade do |t|
     t.string "key"
     t.string "name"
     t.string "description"
     t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["key"], name: "index_disability_tags_on_key"
-    t.index ["name"], name: "index_disability_tags_on_name"
-    t.index ["parent_id"], name: "index_disability_tags_on_parent_id"
+    t.index ["key"], name: "index_disabilities_on_key"
+    t.index ["name"], name: "index_disabilities_on_name"
+    t.index ["parent_id"], name: "index_disabilities_on_parent_id"
+  end
+
+  create_table "disability_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "disability_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "disability_desc_idx"
   end
 
   create_table "organizations", force: :cascade do |t|

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: tags
+# Table name: disabilities
 #
 #  id          :bigint           not null, primary key
 #  description :string
@@ -12,9 +12,9 @@
 #
 # Indexes
 #
-#  index_tags_on_key        (key)
-#  index_tags_on_name       (name)
-#  index_tags_on_parent_id  (parent_id)
+#  index_disabilities_on_key        (key)
+#  index_disabilities_on_name       (name)
+#  index_disabilities_on_parent_id  (parent_id)
 #
 amputation:
   key: amputation
@@ -25,89 +25,89 @@ lower_extremity:
   key: lower-extremity
   name: Lower Extremity
   description: Leg, Foot, or Toe
-  parent: amputation (DisabilityTag)
+  parent: amputation (Disability)
 upper_extremity:
   key: upper-extremity
   name: Upper Extremity
   description: Arm, Hand, or Finger
-  parent: amputation (DisabilityTag)
+  parent: amputation (Disability)
 toe_amputation:
   key: toe-amputation
   name: Toe Amputation
   description: Lisfranc
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 partial_foot_amputation:
   key: partial-foot-amputation
   name: Partial Foot Amputation
   description: Chopart, Pirogoff
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 ankle_disarticulation:
   key: ankle-disarticulation
   name: Ankle Disarticulation
   description: Symes, Boyd
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 below_knee_amputation:
   key: below-knee-amputation
   name: Below-knee Amputation
   description: Trans-tibial
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 knee_disarticulation:
   key: knee-disarticulation
   name: Knee Disarticulation
   description:
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 above_knee_amputation:
   key: above-knee-amputation
   name: Above-knee Amputation
   description: Trans-femoral
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 hip_disarticulation:
   key: hip-disarticulation
   name: Hip Disarticulation
   description:
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 trans_pelvic:
   key: trans-pelvic
   name: Trans-pelvic
   description: Hemi-pelvectomy
-  parent: lower_extremity (DisabilityTag)
+  parent: lower_extremity (Disability)
 finger_amputation:
   key: finger-amputation
   name: Finger Amputation
   description:
-  parent: upper_extremity (DisabilityTag)
+  parent: upper_extremity (Disability)
 partial_hand_amputation:
   key: partial-hand-amputation
   name: Partial Hand Amputation
   description:
-  parent: upper-extremity (DisabilityTag)
+  parent: upper-extremity (Disability)
 wrist_disarticulation:
   key: wrist-disarticulation
   name: Wrist Disarticulation
   description:
-  parent: upper_extremity (DisabilityTag)
+  parent: upper_extremity (Disability)
 below_elbow_amputation:
   key: below-elbow-amputation
   name: Below-elbow Amputation
   description: Trans-radial
-  parent: upper_extremity (DisabilityTag)
+  parent: upper_extremity (Disability)
 elbow_disarticulation:
   key: elbow-disarticulation
   name: Elbow Disarticulation
   description:
-  parent: upper_extremity (DisabilityTag)
+  parent: upper_extremity (Disability)
 above_elbow_amputation:
   key: above-elbow-amputation
   name: Above-elbow Amputation
   description: Trans-humoral
-  parent: upper_extremity (DisabilityTag)
+  parent: upper_extremity (Disability)
 shoulder_disarticulation:
   key: shoulder-disarticulation
   name: Shoulder Disarticulation
   description:
-  parent: upper_extremity (DisabilityTag)
+  parent: upper_extremity (Disability)
 forequarter_amputation:
   key: forequarter-amputation
   name: Forequarter Amputation
   description:
-  parent: upper_extremity (DisabilityTag)
+  parent: upper_extremity (Disability)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Disability tag for organizing resources by disability
-class DisabilityTag < ApplicationRecord
+class Disability < ApplicationRecord
   has_closure_tree
 
   validates :key, presence: true, uniqueness: true
@@ -10,7 +10,7 @@ end
 
 # == Schema Information
 #
-# Table name: disability_tags
+# Table name: disabilities
 #
 #  id          :bigint           not null, primary key
 #  description :string
@@ -22,7 +22,7 @@ end
 #
 # Indexes
 #
-#  index_disability_tags_on_key        (key)
-#  index_disability_tags_on_name       (name)
-#  index_disability_tags_on_parent_id  (parent_id)
+#  index_disabilities_on_key        (key)
+#  index_disabilities_on_name       (name)
+#  index_disabilities_on_parent_id  (parent_id)
 #
