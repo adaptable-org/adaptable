@@ -18,10 +18,10 @@ module Keyable
     # - When name is present, but key isn't, parameterize the name as key
     # - When key is present, ensure it's parameterized
     #
-    # @api @private
+    # @api private
     #
     # @return [String] parameterized key
     def parameterize_key
-      self.key = key&.parameterize || name&.parameterize
+      self.key = key.blank? ? name&.parameterize : key&.parameterize
     end
 end

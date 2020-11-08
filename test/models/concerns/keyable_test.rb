@@ -21,6 +21,12 @@ class KeyableTest < ActiveSupport::TestCase
     assert_equal @name.parameterize, @keyable.key
   end
 
+  test "it strips whitespace from name before generating key" do
+    @keyable.name = " #{@name} "
+    assert @keyable.valid?
+    assert_equal @name.parameterize, @keyable.key
+  end
+
   test "it does not touch the key if it is not blank" do
     key = 'a-different-key'
     @keyable.key = key
@@ -41,7 +47,7 @@ class KeyableTest < ActiveSupport::TestCase
     @keyable.name = nil
     @keyable.key = nil
 
-    refute @keyable.valid?
+    assert @keyable.valid?
     assert_nil @keyable.key
   end
 end
