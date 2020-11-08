@@ -4,8 +4,7 @@ require "test_helper"
 
 class OrganizationTest < ActiveSupport::TestCase
   test "is keyable" do
-    org = Organization.new(name: 'Example Org', url: 'https://example.com')
-    assert org.private_methods.include?(:parameterize_key)
+    assert Organization.new.private_methods.include?(:parameterize_key)
   end
 
   test "requires primary attributes" do
@@ -33,6 +32,14 @@ class OrganizationTest < ActiveSupport::TestCase
     url_errors = new_org.errors.where(:url)
     assert_not_empty url_errors
     assert_equal :taken, url_errors.first.type
+  end
+
+  test "can be connected to disabilities" do
+    org = organizations(:adaptive_sports_cb)
+    assert_empty org.disabilities
+    org.disabilities << disabilities(:amputation)
+    assert org.save
+    assert_not_empty org.reload.disabilities
   end
 end
 

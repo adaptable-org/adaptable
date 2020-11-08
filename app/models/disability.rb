@@ -6,6 +6,8 @@ class Disability < ApplicationRecord
 
   has_closure_tree
 
+  has_and_belongs_to_many :organizations
+
   validates :name, uniqueness: true, presence: true
 end
 

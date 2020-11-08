@@ -4,8 +4,7 @@ require "test_helper"
 
 class DisabilityTest < ActiveSupport::TestCase
   test "is keyable" do
-    org = Disability.new(name: 'Example Disability')
-    assert org.private_methods.include?(:parameterize_key)
+    assert Disability.new.private_methods.include?(:parameterize_key)
   end
 
   test "requires primary attributes" do
@@ -33,6 +32,14 @@ class DisabilityTest < ActiveSupport::TestCase
     key_errors = new_disability.errors.where(:key)
     assert_not_empty key_errors
     assert_equal :taken, key_errors.first.type
+  end
+
+  test "can be connected to organizations" do
+    disability = disabilities(:amputation)
+    assert_empty disability.organizations
+    disability.organizations << organizations(:adaptive_sports_cb)
+    assert disability.save
+    assert_not_empty disability.reload.organizations
   end
 
   test "suports tag hierarchies" do
