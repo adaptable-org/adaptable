@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: disabilities
+#
+#  id          :bigint           not null, primary key
+#  description :string
+#  key         :string           not null
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  parent_id   :integer
+#
+# Indexes
+#
+#  index_disabilities_on_key        (key) UNIQUE
+#  index_disabilities_on_name       (name)
+#  index_disabilities_on_parent_id  (parent_id)
+#
+amputation:
+  key: amputation
+  name: Amputation
+  description:
+  parent:
+lower_extremity:
+  key: lower-extremity
+  name: Lower Extremity
+  description: Leg, Foot, or Toe
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:amputation) %> (Disability)
+above_knee_amputation:
+  key: above-knee-amputation
+  name: Above-knee Amputation
+  description: Trans-tibial
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:lower_extremity) %> (Disability)
+below_knee_amputation:
+  key: below-knee-amputation
+  name: Below-knee Amputation
+  description: Trans-tibial
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:lower_extremity) %> (Disability)

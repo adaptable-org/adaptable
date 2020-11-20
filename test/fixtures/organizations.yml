@@ -3,24 +3,23 @@
 # Table name: organizations
 #
 #  id         :bigint           not null, primary key
+#  key        :string           not null
 #  name       :string
 #  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_organizations_on_key  (key) UNIQUE
+#
 
 adaptive_sports_cb:
+  key: adaptive-sports-center
   name: Adaptive Sports Center
   url: https://www.adaptivesports.org
 
-abr:
-  name: Amputee Blade Runners
-  url: https://amputeebladerunners.com
-
 caf:
+  key: challenged-athletes-foundation
   name: Challenged Athletes Foundation
   url: https://www.challengedathletes.org
-
-tasp:
-  name: Telluride Adaptive Sports Program
-  url: https://tellurideadaptivesports.org

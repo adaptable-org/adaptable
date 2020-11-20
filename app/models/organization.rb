@@ -2,8 +2,12 @@
 
 # Basic model for representing adaptive organizations
 class Organization < ApplicationRecord
-  validates :name, presence: true
-  validates :url, presence: true, uniqueness: true
+  include Keyable
+
+  has_and_belongs_to_many :disabilities
+
+  validates :name, uniqueness: true, presence: true
+  validates :url, uniqueness: true
 end
 
 # == Schema Information
@@ -11,8 +15,13 @@ end
 # Table name: organizations
 #
 #  id         :bigint           not null, primary key
+#  key        :string           not null
 #  name       :string
 #  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_organizations_on_key  (key) UNIQUE
 #
