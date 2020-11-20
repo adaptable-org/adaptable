@@ -1,28 +1,30 @@
 # frozen_string_literal: true
 
-# Basic model for representing adaptive organizations
-class Organization < ApplicationRecord
+# Activity tag for organizing resources by activity
+class Activity < ApplicationRecord
   include Keyable
 
-  has_and_belongs_to_many :activities
-  has_and_belongs_to_many :disabilities
+  has_closure_tree
+
+  has_and_belongs_to_many :organizations
 
   validates :name, uniqueness: true, presence: true
-  validates :url, uniqueness: true
 end
 
 # == Schema Information
 #
-# Table name: organizations
+# Table name: activities
 #
 #  id         :bigint           not null, primary key
 #  key        :string           not null
 #  name       :string
-#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  parent_id  :integer
 #
 # Indexes
 #
-#  index_organizations_on_key  (key) UNIQUE
+#  index_activities_on_key        (key) UNIQUE
+#  index_activities_on_name       (name)
+#  index_activities_on_parent_id  (parent_id)
 #

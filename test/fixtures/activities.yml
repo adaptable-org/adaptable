@@ -1,0 +1,65 @@
+# == Schema Information
+#
+# Table name: activities
+#
+#  id         :bigint           not null, primary key
+#  key        :string           not null
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  parent_id  :integer
+#
+# Indexes
+#
+#  index_activities_on_key        (key) UNIQUE
+#  index_activities_on_name       (name)
+#  index_activities_on_parent_id  (parent_id)
+#
+
+basketball:
+  key: basketball
+  name: Basketball
+
+standup_basketball:
+  key: standup-basketball
+  name: Standup Basketball
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:basketball) %> (Activity)
+
+wheelchair_basketball:
+  key: wheelchair-basketball
+  name: Wheelchair Basketball
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:basketball) %> (Activity)
+
+skiing:
+  key: skiing
+  name: Skiing
+
+sit_skiing:
+  key: sit-skiing
+  name: Sit Skiing
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:skiing) %> (Activity)
+
+alpine_sit_skiing:
+  key: alpine-sit-skiing
+  name: Alpine Sit Skiing
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:sit_skiing) %> (Activity)
+
+nordic_sit_skiing:
+  key: nordic-sit-skiing
+  name: Nordic Sit Skiing
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:sit_skiing) %> (Activity)
+
+standup_skiing:
+  key: standup-skiing
+  name: Standup Skiin.g
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:skiing) %> (Activity)
+
+alpine_standup_skiing:
+  key: alpine-standup-skiing
+  name: Alpine Standup Skiing
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:standup_skiing) %> (Activity)
+
+nordic_standup_skiing:
+  key: nordic-standup-skiing
+  name: Nordic Standup Skiing
+  parent_id: <%= ActiveRecord::FixtureSet.identify(:standup_skiing) %> (Activity)
