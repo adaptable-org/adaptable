@@ -1,0 +1,10 @@
+# == Schema Information
+#
+# Table name: scholarships
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+adaptive_sports_scholarship: {}
