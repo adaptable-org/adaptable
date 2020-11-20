@@ -41,6 +41,14 @@ class OrganizationTest < ActiveSupport::TestCase
     assert org.save
     assert_not_empty org.reload.disabilities
   end
+
+  test "can be connected to activities" do
+    org = organizations(:adaptive_sports_cb)
+    assert_empty org.activities
+    org.activities << activities(:skiing)
+    assert org.save
+    assert_not_empty org.reload.activities
+  end
 end
 
 # == Schema Information
