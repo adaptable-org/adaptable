@@ -43,12 +43,4 @@ namespace :dev do
     system("yarn upgrade")
     system("bundle update")
   end
-
-  desc 'Runs migrations for dev and test'
-  task :migrate do
-    Rake::Task["db:migrate"].execute
-
-    ENV['RAILS_ENV'] = 'test'
-    Rake::Task["db:migrate"].execute
-  end
 end
