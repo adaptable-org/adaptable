@@ -43,7 +43,7 @@ class OfferingTest < ActiveSupport::TestCase
     offering.activities << activities(:skiing)
     assert offering.save
     assert_not_empty offering.reload.activities
-  end  
+  end
 end
 
 # == Schema Information
