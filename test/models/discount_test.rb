@@ -3,9 +3,13 @@
 require "test_helper"
 
 class DiscountTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @discount = Discount.new
+  end
+
+  test "connected to an offering" do
+    assert_respond_to @discount, :offering
+  end
 end
 
 # == Schema Information

@@ -12,4 +12,8 @@ class OfferableTest < ActiveSupport::TestCase
   setup do
     @offerable = OfferableClass.new
   end
+
+  test "connects an offering" do
+    assert_respond_to @offerable, :offering
+  end
 end

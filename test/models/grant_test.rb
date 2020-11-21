@@ -3,9 +3,13 @@
 require "test_helper"
 
 class GrantTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @grant = Grant.new
+  end
+
+  test "connected to an offering" do
+    assert_respond_to @grant, :offering
+  end
 end
 
 # == Schema Information

@@ -3,9 +3,13 @@
 require "test_helper"
 
 class ScholarshipTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @scholarship = Scholarship.new
+  end
+
+  test "connected to an offering" do
+    assert_respond_to @scholarship, :offering
+  end
 end
 
 # == Schema Information
