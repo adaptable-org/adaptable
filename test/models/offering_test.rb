@@ -3,9 +3,31 @@
 require "test_helper"
 
 class OfferingTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "is keyable" do
+    assert Offering.new.private_methods.include?(:parameterize_key)
+  end
+
+  test "requires primary attributes" do
+    offering = Offering.new
+    assert_not offering.valid?
+
+    name_errors = offering.errors.where(:name)
+    assert_not_empty name_errors
+    assert_equal :blank, name_errors.first.type
+  end
+
+  test "requires unique keys/names" do
+    existing_offering = offerings(:caf_grants)
+    new_offering = Offering.new(
+      name: existing_offering.name
+    )
+
+    assert_not new_offering.valid?
+
+    name_errors = new_offering.errors.where(:name)
+    assert_not_empty name_errors
+    assert_equal :taken, name_errors.first.type
+  end
 end
 
 # == Schema Information
