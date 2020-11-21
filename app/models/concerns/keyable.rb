@@ -22,6 +22,7 @@ module Keyable
     #
     # @return [String] parameterized key
     def parameterize_key
-      self.key = key.blank? ? name&.parameterize : key&.parameterize
+      self.key ||= name
+      self.key = self.key&.parameterize
     end
 end

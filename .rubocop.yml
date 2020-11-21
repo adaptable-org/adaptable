@@ -8,6 +8,10 @@ AllCops:
     - 'test/mailers/previews/**/*'
     - 'vendor/bundle/**/*'
 
+# This flags grouped concerns
+Style/MixinGrouping:
+  Enabled: false
+
 # Rails generates too many double quotes by default to stress about this.
 Style/StringLiterals:
   Enabled: false

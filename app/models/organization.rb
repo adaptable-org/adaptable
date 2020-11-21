@@ -2,10 +2,9 @@
 
 # Basic model for representing adaptive organizations
 class Organization < ApplicationRecord
-  include Keyable
+  include Keyable, Taggable
 
-  has_and_belongs_to_many :activities
-  has_and_belongs_to_many :disabilities
+  has_many :offerings
 
   validates :name, uniqueness: true, presence: true
   validates :url, uniqueness: true

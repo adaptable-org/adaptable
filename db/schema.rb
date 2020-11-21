@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_052807) do
+ActiveRecord::Schema.define(version: 2020_11_20_155102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2020_11_20_052807) do
     t.index ["key"], name: "index_activities_on_key", unique: true
     t.index ["name"], name: "index_activities_on_name"
     t.index ["parent_id"], name: "index_activities_on_parent_id"
+  end
+
+  create_table "activities_offerings", id: false, force: :cascade do |t|
+    t.bigint "offering_id", null: false
+    t.bigint "activity_id", null: false
+    t.index ["activity_id", "offering_id"], name: "index_activities_offers_on_activity_id_and_offer_id"
+    t.index ["offering_id", "activity_id"], name: "index_activities_offers_on_offer_id_and_activity_id"
   end
 
   create_table "activities_organizations", id: false, force: :cascade do |t|
@@ -53,6 +60,13 @@ ActiveRecord::Schema.define(version: 2020_11_20_052807) do
     t.index ["parent_id"], name: "index_disabilities_on_parent_id"
   end
 
+  create_table "disabilities_offerings", id: false, force: :cascade do |t|
+    t.bigint "offering_id", null: false
+    t.bigint "disability_id", null: false
+    t.index ["disability_id", "offering_id"], name: "index_disabilities_offers_on_disability_id_and_offer_id"
+    t.index ["offering_id", "disability_id"], name: "index_disabilities_offers_on_offer_id_and_disability_id"
+  end
+
   create_table "disabilities_organizations", id: false, force: :cascade do |t|
     t.bigint "organization_id", null: false
     t.bigint "disability_id", null: false
@@ -68,6 +82,29 @@ ActiveRecord::Schema.define(version: 2020_11_20_052807) do
     t.index ["descendant_id"], name: "disability_desc_idx"
   end
 
+  create_table "discounts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "grants", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "offerings", force: :cascade do |t|
+    t.string "key"
+    t.string "name"
+    t.bigint "organization_id", null: false
+    t.string "offerable_type"
+    t.integer "offerable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["key"], name: "index_offerings_on_key", unique: true
+    t.index ["name"], name: "index_offerings_on_name"
+    t.index ["organization_id"], name: "index_offerings_on_organization_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.string "url"
@@ -77,4 +114,10 @@ ActiveRecord::Schema.define(version: 2020_11_20_052807) do
     t.index ["key"], name: "index_organizations_on_key", unique: true
   end
 
+  create_table "scholarships", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "offerings", "organizations"
 end
