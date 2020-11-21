@@ -28,6 +28,22 @@ class OfferingTest < ActiveSupport::TestCase
     assert_not_empty name_errors
     assert_equal :taken, name_errors.first.type
   end
+
+  test "can be connected to disabilities" do
+    offering = offerings(:adaptive_sports_scholarship)
+    assert_empty offering.disabilities
+    offering.disabilities << disabilities(:amputation)
+    assert offering.save
+    assert_not_empty offering.reload.disabilities
+  end
+
+  test "can be connected to activities" do
+    offering = offerings(:adaptive_sports_scholarship)
+    assert_empty offering.activities
+    offering.activities << activities(:skiing)
+    assert offering.save
+    assert_not_empty offering.reload.activities
+  end  
 end
 
 # == Schema Information
