@@ -7,6 +7,7 @@ class Offering < ApplicationRecord
   delegated_type :offerable, types: %w[Grant Scholarship Discount]
 
   belongs_to :organization
+  has_many :links, as: :linkable
 
   validates :name, uniqueness: true, presence: true
 end
