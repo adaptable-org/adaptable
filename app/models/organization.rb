@@ -5,6 +5,7 @@ class Organization < ApplicationRecord
   include Keyable, Taggable
 
   has_many :offerings
+  has_many :links, as: :linkable
 
   validates :name, uniqueness: true, presence: true
   validates :url, uniqueness: true
