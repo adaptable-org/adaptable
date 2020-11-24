@@ -5,7 +5,6 @@
 #  id         :bigint           not null, primary key
 #  key        :string           not null
 #  name       :string
-#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -17,14 +16,11 @@
 adaptive_sports_cb:
   key: adaptive-sports-center
   name: Adaptive Sports Center
-  url: https://www.adaptivesports.org
 
 caf:
   key: challenged-athletes-foundation
   name: Challenged Athletes Foundation
-  url: https://www.challengedathletes.org
 
 vail_resorts:
   key: vail-resorts
   name: Vail Resorts
-  url: https://www.snow.com

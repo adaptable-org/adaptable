@@ -9,7 +9,9 @@ end
 #
 # Table name: grants
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                :bigint           not null, primary key
+#  application_notes :text
+#  eligibility_notes :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_024854) do
+ActiveRecord::Schema.define(version: 2020_11_24_034205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,16 +85,23 @@ ActiveRecord::Schema.define(version: 2020_11_24_024854) do
   create_table "discounts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "redemption_notes"
+    t.integer "percent"
+    t.integer "value_in_cents"
+    t.integer "original_price_in_cents"
+    t.integer "discounted_price_in_cents"
   end
 
   create_table "grants", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "eligibility_notes"
+    t.text "application_notes"
   end
 
   create_table "links", force: :cascade do |t|
-    t.text "text"
-    t.text "url"
+    t.string "text"
+    t.string "url"
     t.string "linkable_type", null: false
     t.bigint "linkable_id", null: false
     t.integer "kind"
@@ -112,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_024854) do
     t.integer "offerable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "summary"
     t.index ["key"], name: "index_offerings_on_key", unique: true
     t.index ["name"], name: "index_offerings_on_name"
     t.index ["organization_id"], name: "index_offerings_on_organization_id"
@@ -119,7 +127,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_024854) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
-    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "key", null: false
@@ -129,6 +136,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_024854) do
   create_table "scholarships", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "eligibility_notes"
+    t.text "application_notes"
   end
 
   add_foreign_key "offerings", "organizations"

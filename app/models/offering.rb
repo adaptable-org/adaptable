@@ -20,6 +20,7 @@ end
 #  key             :string
 #  name            :string
 #  offerable_type  :string
+#  summary         :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  offerable_id    :integer

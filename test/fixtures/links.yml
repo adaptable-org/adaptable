@@ -5,8 +5,8 @@
 #  id            :bigint           not null, primary key
 #  kind          :integer
 #  linkable_type :string           not null
-#  text          :text
-#  url           :text
+#  text          :string
+#  url           :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  linkable_id   :bigint           not null
