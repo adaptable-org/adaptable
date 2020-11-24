@@ -31,12 +31,26 @@ adaptive_sports_cb_donate:
   linkable_type: Organization
   kind: 2
 
+adaptive_sports_scholarship:
+  text: Scholarships
+  url: https://www.adaptivesports.org/participant-resources/scholarships
+  linkable: adaptive_sports_scholarship (Scholarship)
+  linkable_type: Scholarship
+  kind: 4
+
 caf:
   text:
   url: https://www.challengedathletes.org
   linkable: caf (Organization)
   linkable_type: Organization
   kind: 3
+
+caf_grants:
+  text:
+  url: https://www.challengedathletes.org/grants/
+  linkable: caf_grants (Grant)
+  linkable_type: Grant
+  kind: 0
 
 vail_resorts:
   text:
@@ -45,9 +59,9 @@ vail_resorts:
   linkable_type: Organization
   kind: 3
 
-caf_grants:
+vail_adaptive_pass:
   text:
-  url: https://www.challengedathletes.org/grants/
-  linkable: caf_grants (Offering)
-  linkable_type: Offering
-  kind: 0
+  url: https://www.epicpass.com
+  linkable: vail_adaptive_pass (Discount)
+  linkable_type: Discount
+  kind: 4
