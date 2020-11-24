@@ -35,7 +35,6 @@ organizations.each do |org|
 
   record.name ||= org['name']
   record.key = org['key']
-  record.url = org['url']
   org['disabilities'].each do |disability|
     disability_tag = Disability.find_by(key: disability)
 
