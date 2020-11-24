@@ -16,22 +16,15 @@ class OrganizationTest < ActiveSupport::TestCase
     assert_equal :blank, name_errors.first.type
   end
 
-  test "requires unique keys/names/urls" do
+  test "requires unique keys/names" do
     existing_org = organizations(:caf)
-    new_org = Organization.new(
-      name: existing_org.name,
-      url: existing_org.url
-    )
+    new_org = Organization.new(name: existing_org.name)
 
     assert_not new_org.valid?
 
     name_errors = new_org.errors.where(:name)
     assert_not_empty name_errors
     assert_equal :taken, name_errors.first.type
-
-    url_errors = new_org.errors.where(:url)
-    assert_not_empty url_errors
-    assert_equal :taken, url_errors.first.type
   end
 
   test "can be connected to disabilities" do
@@ -58,7 +51,6 @@ end
 #  id         :bigint           not null, primary key
 #  key        :string           not null
 #  name       :string
-#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -8,7 +8,6 @@ class Organization < ApplicationRecord
   has_many :links, as: :linkable
 
   validates :name, uniqueness: true, presence: true
-  validates :url, uniqueness: true
 end
 
 # == Schema Information
@@ -18,7 +17,6 @@ end
 #  id         :bigint           not null, primary key
 #  key        :string           not null
 #  name       :string
-#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
