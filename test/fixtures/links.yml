@@ -3,9 +3,9 @@
 # Table name: links
 #
 #  id            :bigint           not null, primary key
+#  kind          :integer
 #  linkable_type :string           not null
 #  text          :text
-#  type          :integer
 #  url           :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -22,32 +22,32 @@ adaptive_sports_cb_home:
   url: https://adaptivesports.org
   linkable: adaptive_sports_cb (Organization)
   linkable_type: Organization
-  type: 3
+  kind: 3
 
 adaptive_sports_cb_donate:
   text:
   url: https://www.adaptivesports.org/support-us
   linkable: adaptive_sports_cb (Organization)
   linkable_type: Organization
-  type: 2
+  kind: 2
 
 caf:
   text:
   url: https://www.challengedathletes.org
   linkable: caf (Organization)
   linkable_type: Organization
-  type: 3
+  kind: 3
 
 vail_resorts:
   text:
   url: https://www.snow.com
   linkable: vail_resorts (Organization)
   linkable_type: Organization
-  type: 3
+  kind: 3
 
 caf_grants:
   text:
   url: https://www.challengedathletes.org/grants/
   linkable: caf_grants (Offering)
   linkable_type: Offering
-  type: 0
+  kind: 0

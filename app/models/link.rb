@@ -4,7 +4,7 @@
 class Link < ApplicationRecord
   belongs_to :linkable, polymorphic: true
 
-  enum type: %i[apply buy donate home learn volunteer]
+  enum kind: %i[apply buy donate home learn volunteer]
 end
 
 # == Schema Information
@@ -12,9 +12,9 @@ end
 # Table name: links
 #
 #  id            :bigint           not null, primary key
+#  kind          :integer
 #  linkable_type :string           not null
 #  text          :text
-#  type          :integer
 #  url           :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
