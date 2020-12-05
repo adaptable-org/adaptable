@@ -9,7 +9,7 @@ parserOptions:
   sourceType: module
 rules: {}
 overrides:
-  - files: './app/javascript/packs/application.js'
+  - files: './app/webpacker/packs/application.js'
     rules:
       no-unused-expressions: off
       no-unused-vars: off

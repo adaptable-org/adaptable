@@ -1,4 +1,4 @@
-/* app/javascript/tailwind/tailwind.scss */
+/* app/webpacker/tailwind/tailwind.scss */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
