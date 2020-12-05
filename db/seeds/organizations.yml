@@ -1,7 +1,3 @@
-- name: Amputee Blade Runners
-  abbreviation: ABR
-  disabilities:
-    - lower-extremity
 - name: Adaptive Sports Center
   disabilities:
     - amputation
@@ -9,11 +5,18 @@
   abbreviation: ATF
   disabilities:
     - amputation
+- name: Amputee Blade Runners
+  abbreviation: ABR
+  disabilities:
+    - lower-extremity
 - name: Challenged Athletes Fondation
   abbreviation: CAF
   disabilities:
     - amputation
 - name: Move United
+  disabilities:
+    - amputation
+- name: Nike
   disabilities:
     - amputation
 - name: Telluride Adaptive Sports Program
