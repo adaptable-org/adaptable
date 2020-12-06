@@ -1,0 +1,15 @@
+---
+- name:
+  key:
+  organization:
+  summary:
+  application_notes:
+  eligibility_notes:
+  activities:
+    -
+  disabilities:
+    -
+  links:
+    - text:
+    - url:
+    - kind: apply

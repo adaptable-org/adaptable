@@ -8,5 +8,6 @@ module Offerable
 
   included do
     has_one :offering, as: :offerable, touch: true
+    has_many :links, as: :linkable
   end
 end

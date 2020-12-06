@@ -44,6 +44,14 @@ class OfferingTest < ActiveSupport::TestCase
     assert offering.save
     assert_not_empty offering.reload.activities
   end
+
+  test "can be connected to links" do
+    offering = offerings(:adaptive_sports_scholarship)
+    assert_empty offering.links
+    offering.links << links(:adaptive_sports_scholarship)
+    assert offering.save
+    assert_not_empty offering.reload.links
+  end
 end
 
 # == Schema Information

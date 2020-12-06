@@ -1,48 +1,67 @@
+---
 - name: Amputation
-  parent:
+  wikipedia_key: Amputation
 - name: Lower Extremity
   description: Leg, Foot, or Toe
+  wikipedia_key: Amputation#Leg
   parent: amputation
 - name: Upper Extremity
   description: Arm, Hand, or Finger
+  wikipedia_key: Amputation#Arm
   parent: amputation
 - name: Toe Amputation
   description: Lisfranc
+  wikipedia_key: Amputation#Leg
   parent: lower-extremity
 - name: Partial Foot Amputation
+  wikipedia_key: Amputation#Leg
   description: Chopart, Pirogoff
   parent: lower-extremity
 - name: Ankle Disarticulation
+  wikipedia_key: Amputation#Leg
   description: Symes, Boyd
   parent: lower-extremity
 - name: Below-knee Amputation
+  wikipedia_key: Amputation#Leg
   description: Trans-tibial
   parent: lower-extremity
 - name: Knee Disarticulation
+  wikipedia_key: Amputation#Leg
   parent: lower-extremity
 - name: Above-knee Amputation
+  wikipedia_key: Amputation#Leg
   description: Trans-femoral
   parent: lower-extremity
 - name: Hip Disarticulation
+  wikipedia_key: Amputation#Leg
   parent: lower-extremity
 - name: Trans-pelvic
   description: Hemi-pelvectomy
+  wikipedia_key: Amputation#Leg
   parent: lower-extremity
 - name: Finger Amputation
+  wikipedia_key: Amputation#Arm
   parent: upper-extremity
 - name: Partial Hand Amputation
+  wikipedia_key: Amputation#Arm
   parent: upper-extremity
 - name: Wrist Disarticulation
+  wikipedia_key: Amputation#Arm
   parent: upper-extremity
 - name: Below-elbow Amputation
   description: Trans-radial
+  wikipedia_key: Amputation#Arm
   parent: upper-extremity
 - name: Elbow Disarticulation
+  wikipedia_key: Amputation#Arm
   parent: upper-extremity
 - name: Above-elbow Amputation
   description: Trans-humoral
+  wikipedia_key: Amputation#Arm
   parent: upper-extremity
 - name: Shoulder Disarticulation
+  wikipedia_key: Amputation#Arm
   parent: upper-extremity
 - name: Forequarter Amputation
+  wikipedia_key: Forequarter_amputation
   parent: upper-extremity

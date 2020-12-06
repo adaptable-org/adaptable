@@ -65,13 +65,14 @@ end
 #
 # Table name: disabilities
 #
-#  id          :bigint           not null, primary key
-#  description :string
-#  key         :string           not null
-#  name        :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  parent_id   :integer
+#  id            :bigint           not null, primary key
+#  description   :string
+#  key           :string           not null
+#  name          :string
+#  wikipedia_key :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  parent_id     :integer
 #
 # Indexes
 #
