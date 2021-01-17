@@ -165,9 +165,11 @@ module Seeds
       offering = set_activities(offering, grant)
 
       # Grant-specific data
-      if offering.persisted?
-        offering.offerable.eligibility_notes = grant['eligibility_notes']
-        offering.offerable.application_notes = grant['application_notes']
+      if offering.offerable.persisted?
+        offering.offerable.update(
+          eligibility_notes: grant['eligibility_notes'],
+          application_notes: grant['application_notes']
+        )
       else
         offering.offerable = Grant.new(
           eligibility_notes: grant['eligibility_notes'],
