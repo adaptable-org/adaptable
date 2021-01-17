@@ -163,7 +163,6 @@ module Seeds
       offering.organization = Organization.find_by(key: grant['organization'])
       offering = set_disabilities(offering, grant)
       offering = set_activities(offering, grant)
-      offering = set_links(offering, grant)
 
       # Grant-specific data
       if offering.persisted?
@@ -176,6 +175,10 @@ module Seeds
         )
       end
 
+      save_and_show_result(offering)
+
+      offering.reload
+      offering = set_links(offering, grant)
       save_and_show_result(offering)
     end
   end
