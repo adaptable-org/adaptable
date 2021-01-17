@@ -34,7 +34,7 @@ gem 'bootsnap', '>= 1.5.0', require: false
 gem "honeybadger", "~> 4.7.2"
 
 # For Markdown Processing/Rendering
-gem 'redcarpet', '~> 3.5'
+gem 'redcarpet', '~> 3.5.1'
 
 # For tagging objects
 gem 'closure_tree', '~> 7.2'
