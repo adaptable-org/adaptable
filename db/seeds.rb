@@ -164,17 +164,16 @@ module Seeds
       offering = set_disabilities(offering, grant)
       offering = set_activities(offering, grant)
 
+      offerable_attributes = {
+        eligibility_notes: grant['eligibility_notes'],
+        application_notes: grant['application_notes']
+      }
+
       # Grant-specific data
       if offering.offerable.persisted?
-        offering.offerable.update(
-          eligibility_notes: grant['eligibility_notes'],
-          application_notes: grant['application_notes']
-        )
+        offering.offerable.update(offerable_attributes)
       else
-        offering.offerable = Grant.new(
-          eligibility_notes: grant['eligibility_notes'],
-          application_notes: grant['application_notes']
-        )
+        offering.offerable = Grant.new(offerable_attributes)
       end
 
       save_and_show_result(offering)
