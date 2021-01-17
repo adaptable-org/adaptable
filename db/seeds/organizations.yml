@@ -37,10 +37,10 @@
   disabilities:
     - lower-extremity
   links:
-    - text: AmputeBladeRunners.com
+    - text: AmputeeBladeRunners.com
       url: http://amputeebladerunners.com
       kind: home
-- name: Challenged Athletes Fondation
+- name: Challenged Athletes Foundation
   abbreviation: CAF
   nonprofit: true
   nonprofit_identifier: 33-0739596
