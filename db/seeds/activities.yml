@@ -293,3 +293,6 @@
   wikipedia_key: Volleyball
   parent: volleyball
   mechanics: standing
+- name: Wheelchair Racing
+  wikipedia_key: Wheelchair_racing
+  mechanics: wheelchair

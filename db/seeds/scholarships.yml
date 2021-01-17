@@ -1,9 +1,9 @@
 ---
-- name: Annual Grant Program
-  key: caf-annual-grant-program
-  organization: challenged-athletes-foundation
-  summary: CAF’s flagship grant program aims to remove the barriers that exist between adaptive athletes and their pursuit of sport and fitness.
-  eligibility_notes: Individuals worldwide with permanent physical disabilities are eligible to apply for the CAF grant. Teams, organizations, etc. are not eligible to apply. Medical documentation of disability is required.
+- name:
+  key:
+  organization:
+  summary:
+  eligibility_notes:
   application_notes:
   uses:
   activities:
