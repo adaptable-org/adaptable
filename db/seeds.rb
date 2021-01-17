@@ -11,6 +11,51 @@ module Seeds
     end
   end
 
+  class Activities < Loader
+    def create_or_update!(activity)
+      record = find_or_initialize(activity)
+
+      record.name = activity['name']
+      record.key = activity['key']
+      record.wikipedia_key = activity['wikipedia_key']
+      record.also_known_as = activity['also_known_as']
+      record.mechanics = activity['mechanics']
+      record.parent_id = Activity.find_by(key: activity['parent'])&.id
+
+      save_and_show_result(record)
+    end
+  end
+
+  class Disabilities < Loader
+    def create_or_update!(disability)
+      record = find_or_initialize(disability)
+
+      record.name = disability['name']
+      record.key = disability['key']
+      record.description = disability['description']
+      record.parent_id = Disability.find_by(key: disability['parent'])&.id
+
+      save_and_show_result(record)
+    end
+  end
+
+  class Organizations < Loader
+    def create_or_update!(organization)
+      record = find_or_initialize(organization)
+
+      record.name = organization['name']
+      record.key = organization['key']
+      record = set_disabilities(record, organization)
+      record = set_activities(record, organization)
+      record = set_links(record, organization)
+
+      save_and_show_result(record)
+    end
+  end
+
+  # Base class for seeding required data for any environment.
+  # - Loads the seed data, but ensures existing data is never duplicated.
+  # - Updates or fills in new attributes.
   class Loader
     def object_class
       self.class.name.to_s.demodulize.singularize.constantize
@@ -101,48 +146,6 @@ module Seeds
       end
 
       return record
-    end
-  end
-
-  class Activities < Loader
-    def create_or_update!(activity)
-      record = find_or_initialize(activity)
-
-      record.name = activity['name']
-      record.key = activity['key']
-      record.wikipedia_key = activity['wikipedia_key']
-      record.also_known_as = activity['also_known_as']
-      record.mechanics = activity['mechanics']
-      record.parent_id = Activity.find_by(key: activity['parent'])&.id
-
-      save_and_show_result(record)
-    end
-  end
-
-  class Disabilities < Loader
-    def create_or_update!(disability)
-      record = find_or_initialize(disability)
-
-      record.name = disability['name']
-      record.key = disability['key']
-      record.description = disability['description']
-      record.parent_id = Disability.find_by(key: disability['parent'])&.id
-
-      save_and_show_result(record)
-    end
-  end
-
-  class Organizations < Loader
-    def create_or_update!(organization)
-      record = find_or_initialize(organization)
-
-      record.name = organization['name']
-      record.key = organization['key']
-      record = set_disabilities(record, organization)
-      record = set_activities(record, organization)
-      record = set_links(record, organization)
-
-      save_and_show_result(record)
     end
   end
 end
