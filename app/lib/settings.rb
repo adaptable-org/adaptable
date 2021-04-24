@@ -49,6 +49,7 @@
 # difference should be marginal.
 class Settings
   class ConflictError < ::StandardError; end
+
   class MissingError < ::StandardError; end
 
   class << self
