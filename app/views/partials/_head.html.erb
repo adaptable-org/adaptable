@@ -19,12 +19,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111c4c">
 
-<link rel="preload" href="<%= asset_pack_url 'media/fonts/AtkinsonHyperlegibleRegular102a.woff2' %>" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="<%= asset_pack_url 'media/fonts/AtkinsonHyperlegibleBold102a.woff2' %>" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="<%= asset_pack_url 'media/fonts/AtkinsonHyperlegibleItalic102a.woff2' %>" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="<%= asset_pack_url 'media/fonts/AtkinsonHyperlegibleBoldItalic102a.woff2' %>" as="font" type="font/woff2" crossorigin>
-
-<%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
 <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
 
 <% if Rails.env.production? -%>
