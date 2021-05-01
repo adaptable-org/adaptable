@@ -17,6 +17,7 @@
 /tmp/pids/*
 /vendor/*
 /yarn-error.log
+app/assets/stylesheets/tailwind.css
 Gemfile.lock
 LICENSE
 master.key

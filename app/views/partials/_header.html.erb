@@ -1,5 +1,5 @@
 <header class="header header--landing">
-  <a href="/"><%= image_pack_tag 'adaptable.svg', alt: Settings.required(:org, :name), class: 'header__identity' %></a>
+  <a href="/"><%= image_tag 'adaptable.svg', alt: Settings.required(:org, :name), class: 'header__identity' %></a>
   <p class="header__purpose">
     <%= Settings.required(:org, :about) %>.
   </p>

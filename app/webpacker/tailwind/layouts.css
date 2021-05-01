@@ -1,8 +1,0 @@
-.layout {
-  /* stylelint-disable-line 0 */
-  @apply mx-auto;
-}
-
-.layout--landing {
-  @apply max-w-6xl py-8;
-}

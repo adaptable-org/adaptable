@@ -15,7 +15,7 @@ namespace :code do
     yarn: {
       command: 'yarn audit --level moderate',
       quiet: '',
-      max_exit_status: 3,
+      max_exit_status: 4,
     },
     bundler: {
       command: 'bundle exec bundle-audit check --update',
