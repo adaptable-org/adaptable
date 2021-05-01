@@ -1,9 +1,0 @@
-/* app/webpacker/tailwind/tailwind.scss */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-
-@import 'layouts';
-@import 'components_layout';
-@import 'components_content';
-
-@import 'tailwindcss/utilities';
