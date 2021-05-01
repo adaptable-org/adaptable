@@ -2,7 +2,7 @@
 .yarn-integrity
 
 /.bundle
-/app/webpacker/images/*
+/app/assets/stylesheets/tailwind.css
 /bin/*
 /config/*
 /coverage/*
