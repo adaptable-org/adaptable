@@ -2,7 +2,7 @@
 
 require 'active_support/concern'
 
-# Adds logic for intelligently creating a parameterized key from the name attribute
+# Adds Offerable-specific logic to classes with a delegated type of Offerable
 module Offerable
   extend ActiveSupport::Concern
 

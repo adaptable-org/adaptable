@@ -1,25 +1,88 @@
+---
 - name: Adaptive Sports Center
+  abbreviaton: ASC
+  nonprofit: true
+  nonprofit_identifier: 84-1063447
+  activities:
+    - hiking
+    - mountain-biking
+    - skiing
+    - snowboarding
+    - fat-biking
+    - climbing
   disabilities:
     - amputation
+  links:
+    - text: AdaptiveSports.org
+      url: https://www.adaptivesports.org
+      kind: home
 - name: Adaptive Training Foundation
+  nonprofit: true
+  nonprofit_identifier: 47-1872676
   abbreviation: ATF
+  activities:
+    - strength-training
   disabilities:
     - amputation
+  links:
+    - text: AdaptiveTrainingFoundation.org
+      url: https://www.adaptivetrainingfoundation.org
+      kind: home
 - name: Amputee Blade Runners
+  nonprofit: true
+  nonprofit_identifier: 45-3782439
   abbreviation: ABR
+  activities:
+    - running
   disabilities:
     - lower-extremity
-- name: Challenged Athletes Fondation
+  links:
+    - text: AmputeeBladeRunners.com
+      url: http://amputeebladerunners.com
+      kind: home
+    - text:
+      url: https://amputeebladerunners.com/contact?select=Volunteer
+      kind: volunteer
+    - text:
+      url: https://amputeebladerunners.com/become-a-sponsor/
+      kind: sponsor
+- name: Challenged Athletes Foundation
   abbreviation: CAF
+  nonprofit: true
+  nonprofit_identifier: 33-0739596
+  activities:
+    - cycling
+    - running
+    - skiing
   disabilities:
     - amputation
-- name: Move United
-  disabilities:
-    - amputation
-- name: Nike
-  disabilities:
-    - amputation
+  links:
+    - text: ChallengedAthletes.org
+      url: https://www.challengedathletes.org
+      kind: home
+- name: The Heather Abbott Foundation
+  nonprofit: true
+  nonprofit_identifier: 47-2475200
+  activities: []
+  disabilities: []
+  links:
+    - text: HeatherAbbottFoundation.org
+      url: https://heatherabbottfoundation.org
+      kind: home
 - name: Telluride Adaptive Sports Program
   abbreviation: TASP
+  nonprofit: true
+  nonprofit_identifier: 84-1337870
+  activities:
+    - hiking
+    - mountain-biking
+    - skiing
+    - snowboarding
+    - fat-biking
+    - climbing
   disabilities:
     - amputation
+  links:
+    - text: TellurideAdaptiveSports.org
+      url: https://tellurideadaptivesports.org
+      kind: home

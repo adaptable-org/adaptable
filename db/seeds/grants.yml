@@ -1,0 +1,119 @@
+---
+- name: Running Leg Grant Program
+  key: abr-running-leg-grant-program
+  organization: amputee-blade-runners
+  summary: Amputee Blade Runners helps amputees keep an active lifestyle by providing this vital equipment free of charge. Our goal is to provide a running prosthesis to one athlete in all 50 states.
+  eligibility_notes: Currently, applicants must live in the United States. Adults applicants must complete—not necessarily run—three 5K’s and send in pictures and results from each race. Children must complete at one one-mile fun run. If approved, applicants must be able to travel to Nashville, TN or Savannah, GA for approximately a week in order to be fitted for their prosthesis.
+  application_notes: Applicants must complete a grant application form and go through a grant application process that includes a personal essay, photos, information about current activity levels, and a video of the applicant running in place.
+  activities:
+    - running
+  disabilities:
+    - lower-extremity
+  links:
+    - text:
+      url: https://amputeebladerunners.com/about/
+      kind: learn
+    - text:
+      url: https://amputeebladerunners.com/want-a-running-leg/
+      kind: apply
+- name: Annual Grant Program
+  key: caf-annual-grant-program
+  organization: challenged-athletes-foundation
+  summary: CAF’s flagship grant program aims to remove the barriers that exist between adaptive athletes and their pursuit of sport and fitness.
+  eligibility_notes: Individuals worldwide with permanent physical disabilities are eligible to apply for the CAF grant. Teams, organizations, etc. are not eligible to apply. Medical documentation of disability is required.
+  application_notes: The CAF Annual Grant Program is open for applications in October of each year with grant award notifications going out the following March.
+  activities:
+    - cycling
+    - power-hockey
+    - power-soccer
+    - running
+    - skiing
+    - sled-hockey
+    - wheelchair-basketball
+    - wheelchair-curling
+    - wheelchair-dance
+    - wheelchair-fencing
+    - wheelchair-football
+    - wheelchair-hiking
+    - wheelchair-lacrosse
+    - wheelchair-racing
+    - wheelchair-rugby
+    - wheelchair-tennis
+  disabilities:
+    - amputation
+  links:
+    - text:
+      url: https://www.challengedathletes.org/programs/grants/
+      kind: learn
+- name: Operation Rebound Grant Program
+  key: caf-operation-rebound-grant-program
+  organization: challenged-athletes-foundation
+  summary: CAF’s Operation Rebound® program strengthens the mental and physical well-being of veterans, military personnel and first responders with permanent physical injuries by providing them opportunities to use sports and fitness to re-integrate into our communities and by empowering them through sports.
+  eligibility_notes: Honorably discharged members of the U.S. armed forces, active military personnel, and first responders (U.S. Police, U.S. Federal law enforcement, U.S. firefighter, or U.S. paramedic) with permanent physical disabilities are eligible to apply for the Operation Rebound grant. Proof of service and medical documentation of disability is required.
+  application_notes: The Operation Rebound Grant application is open year-round.
+  activities:
+    - cycling
+    - power-hockey
+    - power-soccer
+    - running
+    - skiing
+    - sled-hockey
+    - wheelchair-basketball
+    - wheelchair-curling
+    - wheelchair-dance
+    - wheelchair-fencing
+    - wheelchair-football
+    - wheelchair-hiking
+    - wheelchair-lacrosse
+    - wheelchair-racing
+    - wheelchair-rugby
+    - wheelchair-tennis
+  disabilities:
+    - amputation
+  links:
+    - text:
+      url: https://www.challengedathletes.org/programs/operation-rebound/
+      kind: learn
+- name: Idaho Grant Program
+  key: caf-idaho-grant-program
+  organization: challenged-athletes-foundation
+  summary: Challenged Athletes Foundation (CAF) collaborates with local Idaho partners to fund grants for adaptive sports equipment, training, and competition expenses.
+  eligibility_notes: Residents of Idaho with permanent physical disabilities are eligible to apply for the CAF Idaho grant. Medical documentation of disability and proof of residence is required.
+  application_notes: The Idaho Grant application is open year-round.
+  activities:
+    - cycling
+    - power-hockey
+    - power-soccer
+    - running
+    - skiing
+    - sled-hockey
+    - wheelchair-basketball
+    - wheelchair-curling
+    - wheelchair-dance
+    - wheelchair-fencing
+    - wheelchair-football
+    - wheelchair-hiking
+    - wheelchair-lacrosse
+    - wheelchair-racing
+    - wheelchair-rugby
+    - wheelchair-tennis
+  disabilities:
+    - amputation
+  links:
+    - text:
+      url: https://www.challengedathletes.org/idaho-grants/
+      kind: learn
+- name: Össur Grant Program
+  key: caf-ossur-grant-program
+  organization: challenged-athletes-foundation
+  summary: Grants for Össur lower-extremity running prosthetics coordinated with your prosthetist.
+  eligibility_notes: Individuals with lower limb amputations are eligible to apply for the CAF Össur grant. Medical documentation of disability is required.
+  application_notes: The Össur Grant application is year-round.
+  activities:
+    - running
+  disabilities:
+    - lower-extremity
+  links:
+    - text:
+      url: https://www.challengedathletes.org/ossur/
+      kind: learn

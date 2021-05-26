@@ -1,32 +1,298 @@
-Alpine Skiing (Standing/Sitting)
-Badminton
-Basketball (Standing/Wheelchair)
-Boccia
-Crossfit (Standing/Wheelchair)
-Curling (Standing/Wheelchair)
-Cycling
-Fencing (Standing/Wheelchair)
-Football
-Ice Hockey (Standing)
-Ice Hockey (Para)
-Hiking (Sitting/Wheelchair)
-Judo
-Kayaking
-Mountain Biking (Standard/Para)
-Nordic Skiing (Standing/Sitting)
-Lacrosse
-Rowing
-Rugby (Standing/Wheelchair)
-Running
-Cycling (Track/Road)
-Shooting
-Para-snowboarding
-Swimming
-Table Tennis
-Taekwondo
-Tennis (Standing/Wheelchair)
-Triathalon
-Volleyball (Standing/Sitting)
-Walking
-Weightlifting
-Wrestling
+- name: Archery
+  wikipedia_key: Archery
+- name: Camping
+  wikipedia_key: Camping
+- name: Basketball
+  wikipedia_key: Basketball
+- name: Standing Basketball
+  wikipedia_key: Basketball
+  parent: basketball
+  mechanics: standing
+- name: Wheelchair Basketball
+  wikipedia_key: Wheelchair_basketball
+  parent: basketball
+  mechanics: wheelchair
+- name: Paddling
+  wikipedia_key: Paddling
+- name: Canoeing
+  wikipedia_key: Canoeing
+  parent: paddling
+- name: Kayaking
+  wikipedia_key: Kayaking
+  parent: paddling
+- name: Rafting
+  wikipedia_key: Rafting
+  also_known_as: White Water Rafting
+  parent: paddling
+- name: Paddleboarding
+  wikipedia_key: Paddleboarding
+  also_known_as: Paddle Surfing, SUP, Stand-up Paddleboarding
+  parent: paddling
+- name: Climbing
+  wikipedia_key: Climbing
+- name: Ice Climbing
+  wikipedia_key: Ice_climbing
+  parent: climbing
+- name: Rock Climbing
+  wikipedia_key: Rock_climbing
+  parent: climbing
+- name: Curling
+  wikipedia_key: Curling
+- name: Standing Curling
+  wikipedia_key: Curling
+  parent: curling
+  mechanics: standing
+- name: Wheelchair Curling
+  wikipedia_key: Wheelchair_curling
+  parent: curling
+  mechanics: wheelchair
+- name: Cycling
+  wikipedia_key: Cycling
+  also_known_as: Bicycling, Biking
+- name: Mountain Biking
+  wikipedia_key: Mountain_biking
+  parent: cycling
+- name: Mountain Biking (Bicycle)
+  wikipedia_key: Mountain_biking
+  parent: mountain-biking
+  mechanics: bicycle
+- name: Mountain Biking (Hand-cycle)
+  wikipedia_key: Mountain_biking
+  parent: mountain-biking
+  mechanics: hand_cycle
+- name: Road Cycling
+  wikipedia_key: Road_cycling
+  parent: cycling
+- name: Road Cycling (Bicycle)
+  wikipedia_key: Road_cycling
+  parent: road-cycling
+  mechanics: bicycle
+- name: Road Cycling (Hand-cycle)
+  wikipedia_key: Road_cycling
+  parent: road-cycling
+  mechanics: hand_cycle
+- name: Fat Biking
+  wikipedia_key: Fatbike
+  also_known_as: Fat-tire Biking, Snow Biking
+  parent: cycling
+- name: Fat Biking (Bicycle)
+  wikipedia_key: Fatbike
+  parent: fat-biking
+  mechanics: bicycle
+- name: Fat Biking (Hand-cycle)
+  wikipedia_key: Fatbike
+  parent: fat-biking
+  mechanics: hand_cycle
+- name: Stationary Biking
+  wikipedia_key: Stationary_bicycle
+  parent: cycling
+  mechanics: stationary
+- name: Dance
+  wikipedia_key: Dance
+- name: Standing Dance
+  wikipedia_key: Dance
+  also_known_as: Para Dance
+  parent: dance
+  mechanics: standing
+- name: Wheelchair Dance
+  wikipedia_key: Wheelchair_DanceSport
+  also_known_as: Wheelchair Dance Sport, Para Dance
+  parent: dance
+  mechanics: wheelchair
+- name: Fencing
+  wikipedia_key: Fencing
+- name: Standing Fencing
+  wikipedia_key: Fencing
+  parent: fencing
+  mechanics: standing
+- name: Wheelchair Fencing
+  wikipedia_key: Wheelchair_fencing
+  parent: fencing
+  mechanics: wheelchair
+- name: Soccer
+  wikipedia_key: Soccer
+  also_known_as: Football
+- name: Standing Soccer
+  wikipedia_key: Amputee_football
+  also_known_as: Amputee Football
+  parent: soccer
+  mechanics: standing
+- name: Power Soccer
+  wikipedia_key: Powerchair_Football
+  also_known_as: Power Football, Powerchair Football
+  parent: soccer
+  mechanics: powered_wheelchair
+- name: Football
+  wikipedia_key: Gridiron_football
+  also_known_as: American Football, Gridiron Football
+- name: Standing Football
+  wikipedia_key: Gridiron_football
+  also_known_as: American Football, Gridiron Football
+  parent: football
+  mechanics: standing
+- name: Wheelchair Football
+  wikipedia_key:
+  also_known_as: American Football, Gridiron Football
+  parent: football
+  mechanics: wheelchair
+- name: Hiking
+  wikipedia_key: Hiking
+- name: Backpacking
+  wikipedia_key: Backpacking_(hiking)
+  parent: hiking
+- name: Wheelchair Hiking
+  parent: hiking
+  mechanics: wheelchair
+- name: Hockey
+  wikipedia_key: Hockey
+- name: Field Hockey
+  wikipedia_key: Field_hockey
+  parent: hockey
+- name: Standing Field Hockey
+  wikipedia_key: Field_hockey
+  also_known_as:
+  parent: field-hockey
+  mechanics: standing
+- name: Floor Hockey
+  wikipedia_key: Floor_hockey
+  parent: hockey
+- name: Standing Floor Hockey
+  wikipedia_key: Floor_hockey
+  also_known_as:
+  parent: floor-hockey
+  mechanics: standing
+- name: Power Hockey
+  wikipedia_key: Power_hockey
+  also_known_as:
+  parent: floor-hockey
+  mechanics: powered_wheelchair
+- name: Ice Hockey
+  wikipedia_key: Ice_hockey
+  parent: hockey
+- name: Standing Ice Hockey
+  wikipedia_key: Ice_hockey
+  parent: ice-hockey
+  mechanics: standing
+- name: Sled Hockey
+  wikipedia_key: Sledge_hockey
+  also_known_as: Para Ice Hockey, Sledge Hockey
+  parent: ice-hockey
+  mechanics: sled
+- name: Lacrosse
+  wikipedia_key: Lacrosse
+  also_known_as:
+- name: Standing Lacrosse
+  wikipedia_key: Lacrosse
+  parent: lacrosse
+  mechanics: standing
+- name: Wheelchair Lacrosse
+  wikipedia_key: Lacrosse
+  parent: lacrosse
+  mechanics: wheelchair
+- name: Rowing
+  wikipedia_key: Rowing
+- name: Crew
+  wikipedia_key: Rowing_(sport)
+  parent: rowing
+- name: Stationary
+  wikipedia_key: Rowing_(sport)
+  parent: rowing
+  mechanics: stationary
+- name: Rugby
+  wikipedia_key: Rugby
+  also_known_as: Rugby Union
+- name: Standing Rugby
+  also_known_as: Rugby Union
+  wikipedia_key: Rugby_union
+  parent: rugby
+  mechanics: standing
+- name: Wheelchair Rugby
+  wikipedia_key: Wheelchair_rugby
+  parent: rugby
+  mechanics: wheelchair
+- name: Running
+  wikipedia_key: Running
+- name: Long-distance Running
+  wikipedia_key: Long-distance_running
+  also_known_as: Endurance Running
+  parent: running
+  mechanics: standing
+- name: Sprinting
+  wikipedia_key: Sprint_(running)
+  parent: running
+  mechanics: standing
+- name: Trail Running
+  wikipedia_key: Trail_running
+  parent: running
+  mechanics: standing
+- name: Treadmill
+  wikipedia_key: Treadmill
+  parent: running
+  mechanics: stationary
+- name: Skiing
+  also_known_as: Para-skiing, Adaptive Skiing
+  wikipedia_key: Skiing
+- name: Alpine Skiing
+  wikipedia_key: Alpine_skiing
+  also_known_as: Downhill Skiing
+  parent: skiing
+- name: Alpine Skiing (Standing)
+  wikipedia_key: Alpine_skiing
+  parent: alpine-skiing
+  mechanics: standing
+- name: Para-alpine Skiing
+  wikipedia_key: Para-alpine_skiing
+  also_known_as: Sit Skiing
+  parent: alpine-skiing
+  mechanics: sit_ski
+- name: Nordic Skiing
+  wikipedia_key: Nordic_skiing
+  parent: skiing
+- name: Nordic Skiing (Standing)
+  wikipedia_key: Nordic_skiing
+  parent: nordic-skiing
+  mechanics: standing
+- name: Para-nordic Skiing
+  wikipedia_key: Paralympic_Nordic_skiing
+  parent: nordic-skiing
+  mechanics: sit_ski
+- name: Telemark Skiing
+  wikipedia_key: Telemark_skiing
+  parent: skiing
+- name: Snowboarding
+  wikipedia_key: Para-snowboarding
+  also_known_as: Para-snowboarding, Adaptive Snowboarding
+- name: Surfing
+  wikipedia_key: Surfing
+  also_known_as: Para-surfing, Adaptive Surfing
+- name: Strength Training
+  wikipedia_key: Strength_training
+- name: High-intensity Interval Training
+  wikipedia_key: High-intensity_interval_training
+  parent: strength-training
+- name: Weightlifting
+  wikipedia_key: Weightlifting
+  parent: strength-training
+- name: Tennis
+  wikipedia_key: Tennis
+- name: Standing Tennis
+  wikipedia_key: Tennis
+  parent: tennis
+  mechanics: standing
+- name: Wheelchair Tennis
+  wikipedia_key: Wheelchair_tennis
+  parent: tennis
+  mechanics: wheelchair
+- name: Volleyball
+  wikipedia_key: Volleyball
+- name: Sitting Volleyball
+  wikipedia_key: Sitting_volleyball
+  parent: volleyball
+  mechanics: sitting
+- name: Standing Volleyball
+  wikipedia_key: Volleyball
+  parent: volleyball
+  mechanics: standing
+- name: Wheelchair Racing
+  wikipedia_key: Wheelchair_racing
+  mechanics: wheelchair

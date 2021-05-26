@@ -23,18 +23,6 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 
-adaptive_sports_scholarship:
-  key: financial-assistance-scholarship
-  name: Financial Assistance Scholarship
-  organization: adaptive_sports_cb
-  offerable: adaptive_sports_scholarship (Scholarship)
-
-vail_adaptive_pass:
-  key: vail-resorts-adaptive-pass
-  name: Vail Resorts Adaptive Pass
-  organization: vail_resorts
-  offerable: vail_adaptive_pass (Discount)
-
 caf_grants:
   key: caf-grants
   name: Challenged Athletes Foundation Grants

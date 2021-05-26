@@ -30,7 +30,7 @@ class OfferingTest < ActiveSupport::TestCase
   end
 
   test "can be connected to disabilities" do
-    offering = offerings(:adaptive_sports_scholarship)
+    offering = offerings(:caf_grants)
     assert_empty offering.disabilities
     offering.disabilities << disabilities(:amputation)
     assert offering.save
@@ -38,11 +38,19 @@ class OfferingTest < ActiveSupport::TestCase
   end
 
   test "can be connected to activities" do
-    offering = offerings(:adaptive_sports_scholarship)
+    offering = offerings(:caf_grants)
     assert_empty offering.activities
     offering.activities << activities(:skiing)
     assert offering.save
     assert_not_empty offering.reload.activities
+  end
+
+  test "can be connected to links" do
+    offering = offerings(:caf_grants)
+    assert_empty offering.links
+    offering.links << links(:caf)
+    assert offering.save
+    assert_not_empty offering.reload.links
   end
 end
 

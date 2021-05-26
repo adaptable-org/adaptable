@@ -65,12 +65,15 @@ end
 #
 # Table name: activities
 #
-#  id         :bigint           not null, primary key
-#  key        :string           not null
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  parent_id  :integer
+#  id            :bigint           not null, primary key
+#  also_known_as :string
+#  key           :string           not null
+#  mechanics     :integer
+#  name          :string
+#  wikipedia_key :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  parent_id     :integer
 #
 # Indexes
 #

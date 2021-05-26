@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_141623) do
+ActiveRecord::Schema.define(version: 2021_05_26_195202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2020_11_24_141623) do
     t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "wikipedia_key"
+    t.string "also_known_as"
+    t.integer "mechanics"
     t.index ["key"], name: "index_activities_on_key", unique: true
     t.index ["name"], name: "index_activities_on_name"
     t.index ["parent_id"], name: "index_activities_on_parent_id"
@@ -55,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_141623) do
     t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "wikipedia_key"
     t.index ["key"], name: "index_disabilities_on_key", unique: true
     t.index ["name"], name: "index_disabilities_on_name"
     t.index ["parent_id"], name: "index_disabilities_on_parent_id"
@@ -80,16 +84,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_141623) do
     t.integer "generations", null: false
     t.index ["ancestor_id", "descendant_id", "generations"], name: "disability_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "disability_desc_idx"
-  end
-
-  create_table "discounts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "redemption_notes"
-    t.integer "percent"
-    t.integer "value_in_cents"
-    t.integer "original_price_in_cents"
-    t.integer "discounted_price_in_cents"
   end
 
   create_table "grants", force: :cascade do |t|
@@ -133,13 +127,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_141623) do
     t.boolean "nonprofit", default: false
     t.string "nonprofit_identifier"
     t.index ["key"], name: "index_organizations_on_key", unique: true
-  end
-
-  create_table "scholarships", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "eligibility_notes"
-    t.text "application_notes"
   end
 
   add_foreign_key "offerings", "organizations"
