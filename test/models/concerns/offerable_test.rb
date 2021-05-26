@@ -3,7 +3,7 @@
 require "test_helper"
 
 class OfferableClass < ActiveRecord::Base
-  self.table_name = 'discounts'
+  self.table_name = 'grants'
 
   include Offerable
 end

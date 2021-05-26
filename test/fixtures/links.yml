@@ -31,13 +31,6 @@ adaptive_sports_cb_donate:
   linkable_type: Organization
   kind: 2
 
-adaptive_sports_scholarship:
-  text: Scholarships
-  url: https://www.adaptivesports.org/participant-resources/scholarships
-  linkable: adaptive_sports_scholarship (Scholarship)
-  linkable_type: Scholarship
-  kind: 4
-
 caf:
   text:
   url: https://www.challengedathletes.org

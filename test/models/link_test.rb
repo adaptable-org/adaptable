@@ -9,22 +9,10 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal link.linkable, org
   end
 
-  test "can be associated with discounts" do
-    discount = discounts(:vail_adaptive_pass)
-    link = links(:vail_adaptive_pass)
-    assert_equal link.linkable, discount
-  end
-
   test "can be associated with grants" do
     grant = grants(:caf_grants)
     link = links(:caf_grants)
     assert_equal link.linkable, grant
-  end
-
-  test "can be associated with scholarships" do
-    scholarship = scholarships(:adaptive_sports_scholarship)
-    link = links(:adaptive_sports_scholarship)
-    assert_equal link.linkable, scholarship
   end
 end
 
