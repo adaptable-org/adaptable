@@ -1,4 +1,21 @@
 ---
+- name: Running Leg Grant Program
+  key: abr-running-leg-grant-program
+  organization: amputee-blade-runners
+  summary: Amputee Blade Runners helps amputees keep an active lifestyle by providing this vital equipment free of charge. Our goal is to provide a running prosthesis to one athlete in all 50 states.
+  eligibility_notes: Currently, applicants must live in the United States. Adults applicants must complete—not necessarily run—three 5K’s and send in pictures and results from each race. Children must complete at one one-mile fun run. If approved, applicants must be able to travel to Nashville, TN or Savannah, GA for approximately a week in order to be fitted for their prosthesis.
+  application_notes: Applicants must complete a grant application form and go through a grant application process that includes a personal essay, photos, information about current activity levels, and a video of the applicant running in place.
+  activities:
+    - running
+  disabilities:
+    - lower-extremity
+  links:
+    - text:
+      url: https://amputeebladerunners.com/about/
+      kind: learn
+    - text:
+      url: https://amputeebladerunners.com/want-a-running-leg/
+      kind: apply
 - name: Annual Grant Program
   key: caf-annual-grant-program
   organization: challenged-athletes-foundation

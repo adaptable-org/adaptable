@@ -40,6 +40,12 @@
     - text: AmputeeBladeRunners.com
       url: http://amputeebladerunners.com
       kind: home
+    - text:
+      url: https://amputeebladerunners.com/contact?select=Volunteer
+      kind: volunteer
+    - text:
+      url: https://amputeebladerunners.com/become-a-sponsor/
+      kind: sponsor
 - name: Challenged Athletes Foundation
   abbreviation: CAF
   nonprofit: true
@@ -54,12 +60,14 @@
     - text: ChallengedAthletes.org
       url: https://www.challengedathletes.org
       kind: home
-- name: Nike
+- name: The Heather Abbott Foundation
+  nonprofit: true
+  nonprofit_identifier: 47-2475200
   activities: []
   disabilities: []
   links:
-    - text: Nike.com
-      url: https://nike.com
+    - text: HeatherAbbottFoundation.org
+      url: https://heatherabbottfoundation.org
       kind: home
 - name: Telluride Adaptive Sports Program
   abbreviation: TASP
