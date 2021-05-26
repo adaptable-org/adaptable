@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_195906) do
+ActiveRecord::Schema.define(version: 2021_05_26_195202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,16 +86,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_195906) do
     t.index ["descendant_id"], name: "disability_desc_idx"
   end
 
-  create_table "discounts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "redemption_notes"
-    t.integer "percent"
-    t.integer "value_in_cents"
-    t.integer "original_price_in_cents"
-    t.integer "discounted_price_in_cents"
-  end
-
   create_table "grants", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -137,13 +127,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_195906) do
     t.boolean "nonprofit", default: false
     t.string "nonprofit_identifier"
     t.index ["key"], name: "index_organizations_on_key", unique: true
-  end
-
-  create_table "scholarships", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "eligibility_notes"
-    t.text "application_notes"
   end
 
   add_foreign_key "offerings", "organizations"

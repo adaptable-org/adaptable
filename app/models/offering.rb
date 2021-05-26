@@ -4,7 +4,7 @@
 class Offering < ApplicationRecord
   include Keyable, Taggable
 
-  delegated_type :offerable, types: %w[Grant Scholarship Discount]
+  delegated_type :offerable, types: %w[Grant]
 
   belongs_to :organization
   has_many :links, as: :linkable
