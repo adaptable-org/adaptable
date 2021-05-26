@@ -4,7 +4,7 @@
 class Link < ApplicationRecord
   belongs_to :linkable, polymorphic: true
 
-  enum kind: %i[apply buy donate home learn volunteer]
+  enum kind: %i[apply buy donate home learn volunteer sponsor]
 end
 
 # == Schema Information
