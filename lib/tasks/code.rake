@@ -38,25 +38,6 @@ namespace :code do
       format: 'bundle exec rubocop --auto-correct',
       quiet: '--format q',
     },
-    stylelint: {
-      command: 'yarn stylelint .',
-      format: 'yarn stylelint --fix .',
-      quiet: '--quiet',
-    },
-    eslint: {
-      command: 'yarn eslint .',
-      format: 'yarn eslint --fix .',
-      quiet: '--quiet',
-    },
-    prettier: {
-      command: 'yarn prettier --check .',
-      format: 'yarn prettier --write .',
-      quiet: '',
-    },
-    alex: {
-      command: 'yarn alex',
-      quiet: '--quiet',
-    },
     yardstick: {
       command: 'bundle exec rake code:review:docs',
       quiet: '',
@@ -84,7 +65,7 @@ namespace :code do
   namespace :review do
 
     desc 'Runs all dependency, tests, security, and syntax checks in order of risk/importance'
-    task all: %w[dependencies tests security syntax language documentation coverage]
+    task all: %w[dependencies tests security syntax documentation coverage]
 
     desc 'Audits Bundler and Yarn dependencies'
     task :dependencies do
@@ -103,15 +84,10 @@ namespace :code do
 
     desc 'Runs syntax checks'
     task :syntax do
-      review_group(:syntax, %i[rubocop stylelint eslint prettier])
+      review_group(:syntax, %i[rubocop])
     end
 
-    desc 'Runs language checks'
-    task :language do
-      review_group(:language, %i[alex])
-    end
-
-    desc 'Runs language checks'
+    desc 'Runs documentation checks'
     task :documentation do
       review_group(:documentation, %i[yardstick inch])
     end
