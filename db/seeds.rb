@@ -34,8 +34,10 @@ module Seeds
     end
 
     def load!
+      puts
       puts "Loading #{records_type}"
       records.each { |record| create_or_update!(record) }
+      puts
     end
 
     def key_for(record)
@@ -49,9 +51,12 @@ module Seeds
     end
 
     def save_and_show_result(record)
-      return if record.save
-
-      puts "#{record.name} had errors: #{record.errors.full_messages}"
+      if record.save
+        print '.'
+      else
+        puts
+        puts "#{record.name} had errors: #{record.errors.full_messages}"
+      end
     end
 
     def create_or_update!(record)
@@ -170,7 +175,7 @@ module Seeds
       }
 
       # Grant-specific data
-      if offering.offerable.persisted?
+      if offering.offerable&.persisted?
         offering.offerable.update(offerable_attributes)
       else
         offering.offerable = Grant.new(offerable_attributes)
@@ -181,6 +186,13 @@ module Seeds
       offering.reload
       offering = set_links(offering, grant)
       save_and_show_result(offering)
+    rescue => exception
+      puts
+      puts exception.message
+      pp exception.backtrace.to_a.select { |line| line =~ /adaptable/ }
+      puts
+      pp offering.key
+      puts
     end
   end
 end
